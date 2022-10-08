@@ -10,7 +10,7 @@
  *
  * @return:     adc
  *********************************************************************/
-void SetPwmDuty(u16 temp)
+void SetPwmDuty(uint16_t temp)
 {
     /* Set the Pulse value */
     TIM2->CCR1H = (uint8_t)(temp >> 8);
@@ -24,9 +24,9 @@ void SetPwmDuty(u16 temp)
  *
  * @return:     adc
  *********************************************************************/
-u16 ADConversion(ADC_Channel_TypeDef channel)
+uint16_t ADConversion(ADC_Channel_TypeDef channel)
 {
-    u16 adc = 0;
+    uint16_t adc = 0;
 
     // Enable ADC1 Channels
     ADC_ChannelCmd(ADC1, channel, ENABLE);
@@ -47,10 +47,10 @@ u16 ADConversion(ADC_Channel_TypeDef channel)
  *
  * @return:     NONE
  *********************************************************************/
-void SortRoutine(INT16U a[], INT8U num)
+void SortRoutine(uint16_t a[], uint8_t num)
 {
-    INT8U i, j;
-    INT16U tmp;
+    uint8_t i, j;
+    uint16_t tmp;
 
     for (i = 0; i < num - 1; i++) {
         for (j = i + 1; j < num; j++) {
@@ -70,11 +70,11 @@ void SortRoutine(INT16U a[], INT8U num)
  *
  * @return:     NONE
  *********************************************************************/
-INT16U GetAverageValue(INT16U *ptr, INT8U num)
+uint16_t GetAverageValue(uint16_t *ptr, uint8_t num)
 {
-    INT8U i;
-    INT16U sum = 0;
-    INT16U average;
+    uint8_t i;
+    uint16_t sum = 0;
+    uint16_t average;
 
     for (i = 1; i < num - 1; i++) {
         sum += *(ptr + i);
@@ -96,11 +96,11 @@ INT16U GetAverageValue(INT16U *ptr, INT8U num)
  *
  * @return:     ADC value
  *********************************************************************/
-u16 KnobSwitch(void)
+uint16_t KnobSwitch(void)
 {
-    u8 i;
-    u16 adVal;
-    u16 adBuf[5];
+    uint8_t i;
+    uint16_t adVal;
+    uint16_t adBuf[5];
     //FP32 Voltage;
 
     for (i = 0; i < 5; i++) {
@@ -129,7 +129,7 @@ u16 KnobSwitch(void)
 #define _ADC_VALUE_10_ (0xAD6 / 10 * 9)
 #define _ADC_VALUE_11_ (0xfff)
 
-u16 LEVEL_TBL_1[10] = {
+uint16_t LEVEL_TBL_1[10] = {
     _ADC_VALUE_2_, _ADC_VALUE_3_, _ADC_VALUE_4_, _ADC_VALUE_5_,  _ADC_VALUE_6_,
     _ADC_VALUE_7_, _ADC_VALUE_8_, _ADC_VALUE_9_, _ADC_VALUE_10_, _ADC_VALUE_11_,
 };
@@ -145,7 +145,7 @@ u16 LEVEL_TBL_1[10] = {
 #define _LEVEL_9_ADC_VALUE_  (_ADC_VALUE_9_ + (_ADC_VALUE_10_ - _ADC_VALUE_9_) / 2)
 #define _LEVEL_10_ADC_VALUE_ (_ADC_VALUE_10_ + (_ADC_VALUE_11_ - _ADC_VALUE_10_) / 2)
 
-u16 LEVEL_TBL[10] = {
+uint16_t LEVEL_TBL[10] = {
     _LEVEL_1_ADC_VALUE_, _LEVEL_2_ADC_VALUE_, _LEVEL_3_ADC_VALUE_, _LEVEL_4_ADC_VALUE_, _LEVEL_5_ADC_VALUE_,
     _LEVEL_6_ADC_VALUE_, _LEVEL_7_ADC_VALUE_, _LEVEL_8_ADC_VALUE_, _LEVEL_9_ADC_VALUE_, _LEVEL_10_ADC_VALUE_,
 };
@@ -157,12 +157,12 @@ u16 LEVEL_TBL[10] = {
  *
  * @return:     Switch level
  *********************************************************************/
-u8 GetKnobSwitchLevel(void)
+uint8_t GetKnobSwitchLevel(void)
 {
-    u16 Advalue;
-    //u8 num=10;
-    u8 i, j;
-    u8 temp[3] = { 0 };
+    uint16_t Advalue;
+    //uint8_t num=10;
+    uint8_t i, j;
+    uint8_t temp[3] = { 0 };
 
     for (i = 0; i < 3; i++) {
         Advalue           = KnobSwitch();

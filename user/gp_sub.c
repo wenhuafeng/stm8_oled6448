@@ -10,7 +10,7 @@
   * @retval None
  *********************************************************************/
 #ifdef _DELAY_MS_1_
-void DelayMs(u16 n_ms)
+void DelayMs(uint16_t n_ms)
 {
     /* Init TIMER 4 */
     CLK_PeripheralClockConfig(CLK_Peripheral_TIM4, ENABLE);
@@ -49,7 +49,7 @@ void DelayMs(u16 n_ms)
  *********************************************************************/
 #ifdef _DELAY_US_1_
 
-void DelayUs(u16 n_10us)
+void DelayUs(uint16_t n_10us)
 {
     /* Init TIMER 4 */
     CLK_PeripheralClockConfig(CLK_Peripheral_TIM4, ENABLE);
@@ -89,7 +89,7 @@ void DelayUs(u16 n_10us)
  * @return:     NONE
  *********************************************************************/
 #ifdef _HEX_TO_ASC_
-INT8U HexToAsc(INT8U aHex)
+uint8_t HexToAsc(uint8_t aHex)
 {
     if ((aHex >= 0) && (aHex <= 9))
         aHex += 0x30;
@@ -110,7 +110,7 @@ INT8U HexToAsc(INT8U aHex)
  * @return:     NONE
  *********************************************************************/
 #ifdef _ASC_TO_HEX_
-INT8U AscToHex(INT8U aChar)
+uint8_t AscToHex(uint8_t aChar)
 {
     if ((aChar >= 0x30) && (aChar <= 0x39))
         aChar -= 0x30;
@@ -134,7 +134,7 @@ INT8U AscToHex(INT8U aChar)
  *********************************************************************/
 #ifdef _DELAY_US
 
-void DelayUs(INT8U count)
+void DelayUs(uint8_t count)
 {
     //count = count*20;
 
@@ -153,18 +153,18 @@ void DelayUs(INT8U count)
  *********************************************************************/
 #ifdef _DELAY_MS
 
-void DelayMs(INT16U t) //用示波器调过，（8MHZ）
+void DelayMs(uint16_t t) //用示波器调过，（8MHZ）
 {
     /*
   //8M
-  INT8U i,j;
+  uint8_t i,j;
   for(; t > 0; t--)
   for(j = 21; j > 0; j--)
   for(i = 90; i > 0; i--);
   */
 
     //16M
-    INT8U i, j;
+    uint8_t i, j;
     for (; t > 0; t--)
         for (j = 20; j > 0; j--)
             for (i = 199; i > 0; i--)
@@ -172,9 +172,9 @@ void DelayMs(INT16U t) //用示波器调过，（8MHZ）
 }
 
 /*
-void DelayMs (INT8U count)
+void DelayMs (uint8_t count)
 {
-  INT16U i;
+  uint16_t i;
 
 #if (SystemCoreClock == _4M)
   do {
@@ -225,9 +225,9 @@ void DelayMs (INT8U count)
  *********************************************************************/
 #ifdef _C24HR_TO_12HR
 
-INT8U C24HR_TO_12HR(INT8U hr)
+uint8_t C24HR_TO_12HR(uint8_t hr)
 {
-    INT8U val;
+    uint8_t val;
 
     if (hr <= 11) {
         F_AM_PM = _AM;
@@ -259,7 +259,7 @@ INT8U C24HR_TO_12HR(INT8U hr)
  *********************************************************************/
 #ifdef _C2F
 
-INT16S C2F(INT16S temp)
+int16_t C2F(int16_t temp)
 {
     return (temp * 18 + 320);
 }
@@ -278,12 +278,12 @@ INT16S C2F(INT16S temp)
 #ifdef _CALC_WEEK
 
 //week table
-CONST INT8U WEEK_TAB_ADDR[13] = { 0x00, 0x00, 0x03, 0x02, 0x05, 0x00, 0x03, 0x05, 0x01, 0x04, 0x06, 0x02, 0x04 };
+CONST uint8_t WEEK_TAB_ADDR[13] = { 0x00, 0x00, 0x03, 0x02, 0x05, 0x00, 0x03, 0x05, 0x01, 0x04, 0x06, 0x02, 0x04 };
 
 //calculate week
 void CALC_WEEK(void)
 {
-    INT16U tmp1, tmp2, tmp3;
+    uint16_t tmp1, tmp2, tmp3;
 
     tmp1 = DEC2HEX(D_YEAR);
     tmp2 = DEC2HEX(D_MONTH);
@@ -302,7 +302,7 @@ void CALC_WEEK(void)
  *********************************************************************/
 #ifdef _HPA2INHG
 
-INT16U HPA2INHG(INT16U i)
+uint16_t HPA2INHG(uint16_t i)
 {
     return (i * 2953 / 1000);
 }
@@ -318,9 +318,9 @@ INT16U HPA2INHG(INT16U i)
  *********************************************************************/
 #ifdef _HEX2DEC
 
-void HEX2DEC(INT16U Hp)
+void HEX2DEC(uint16_t Hp)
 {
-    INT16U i;
+    uint16_t i;
 
     i      = Hp;
     DEC[0] = 0;
@@ -355,9 +355,9 @@ void HEX2DEC(INT16U Hp)
  *********************************************************************/
 #ifdef _DEC2HEX
 
-INT8U DEC2HEX(INT8U HEX_1)
+uint8_t DEC2HEX(uint8_t HEX_1)
 {
-    INT8U i;
+    uint8_t i;
 
     i = HEX_1 & 0xf0;
     i = i >> 4;

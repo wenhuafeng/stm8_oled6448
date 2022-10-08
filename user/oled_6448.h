@@ -60,6 +60,6 @@ void OLED_OFF(void);
 void OLED_Init(void);
 void OledDisp(void);
 //void LCD_P8x16Str(void);
-void LCD_P8x16Str(u8 *Tbl);
+void LCD_P8x16Str(uint8_t *Tbl);
 
 #endif

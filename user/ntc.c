@@ -14,9 +14,9 @@
 #if (_NTC_)
 
 //#define _NTC_SRC_
-#define AD_OF_NTC(R) ((U16)(2 / (2 + (R)) * 1024 + 0.5))
+#define AD_OF_NTC(R) ((uint16_t)(2 / (2 + (R)) * 1024 + 0.5))
 
-CONST U16 adNTC_3950_100K[] = {
+CONST uint16_t adNTC_3950_100K[] = {
     AD_OF_NTC(324.497), //  0
     AD_OF_NTC(308.533), //  1
     AD_OF_NTC(293.440), //  2
@@ -210,7 +210,7 @@ Other         : 注意事项、修改记录、函数版本等
 --------------------------------------------------------*/
 void NTC_Init(void)
 {
-    u16 temp;
+    uint16_t temp;
 
     temp            = adNTC_3950_100K[0];
     tprBoil.tempVal = temp;
@@ -232,11 +232,11 @@ Author        : 振邦
 Date          : 2018.9.17
 Other         : 注意事项、修改记录、函数版本等
 --------------------------------------------------------*/
-static S16 CalTempFun(u16 val, U16 CONST *tab, u8 lenth)
+static int16_t CalTempFun(uint16_t val, uint16_t CONST *tab, uint8_t lenth)
 {
-    u16 lop_max, lop_min;
-    u16 avarg;
-    s16 ret;
+    uint16_t lop_max, lop_min;
+    uint16_t avarg;
+    int16_t ret;
     lop_min = 0;
     lop_max = lenth - 1;
     avarg   = 0;
@@ -278,10 +278,10 @@ Author        : 振邦
 Date          : 2018.9.17
 Other         : 注意事项、修改记录、函数版本等
 --------------------------------------------------------*/
-u8 ADC_Collect(ADC_Channel_TypeDef channel, TEMP_STRUCT *str)
+uint8_t ADC_Collect(ADC_Channel_TypeDef channel, TEMP_STRUCT *str)
 {
-    u16 tmp;
-    u8 ret = 0;
+    uint16_t tmp;
+    uint8_t ret = 0;
 
     if (str != NULL) {
         tmp = ADConversion(channel);
@@ -333,7 +333,7 @@ Other         : 注意事项、修改记录、函数版本等
 --------------------------------------------------------*/
 void NTC_Check(void)
 {
-    static U8 step = 0;
+    static uint8_t step = 0;
     switch (step) {
         default:
         case 0:

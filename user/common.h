@@ -1,7 +1,6 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-/*----------------------------------------------------------------------------*/
 //Data Type const
 #ifdef OS_GLOBALS
 #define OS_EXT extern
@@ -27,15 +26,14 @@
 #include <string.h>
 
 /* Includes User -------------------------------------------------------------*/
-#include "stdio.h"
 #include "stm8l15x_conf.h"
 
 #include "type_define.h"
-#include "delay.h"
+//#include "delay.h"
 #include "main.h"
 #include "gp_sub.h"
 #include "initialization.h"
-#include "stm8l_low_power.h"
+//#include "stm8l_low_power.h"
 #include "adc_func.h"
 #include "key_process.h"
 

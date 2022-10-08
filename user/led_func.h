@@ -20,7 +20,7 @@ enum {
     _LED_BAT_IND_ONE_,   //Battery indicator one
     _LED_BAT_IND_EMPTY_, //Battery indicator empty
 };
-OS_EXT u8 LED_ChargeStatic;
+OS_EXT uint8_t LED_ChargeStatic;
 
 enum {
     _LED_PWM_OFF_,
@@ -28,7 +28,7 @@ enum {
     _LED_MID_,
     _LED_HIGH_,
 };
-OS_EXT u8 LED_PwmGear;
+OS_EXT uint8_t LED_PwmGear;
 
 //enum {
 //  _SWITCH_OFF_,
@@ -44,20 +44,20 @@ enum {
     _WORK_MID_,
     _WORK_HIGH_,
 };
-//OS_EXT u8 Switch;
+//OS_EXT uint8_t Switch;
 
 #define _LED_BAT_IND_TIME_ (10 * 2 + 1)
-OS_EXT u8 LED_BatteryIndicatorCtr;
+OS_EXT uint8_t LED_BatteryIndicatorCtr;
 
 //-----------------------------------------------------------
 
 void LED_ControlManage(void);
 void LED_AllOnOff(FlagStatus F_tmp);
-void LED_PwmGearSet(u8 gear);
-void LED_ChargeStaticSet(u8 sta);
+void LED_PwmGearSet(uint8_t gear);
+void LED_ChargeStaticSet(uint8_t sta);
 
 void LED_SetBatVolInd(void);
-void LED_SetBatVolInd_10S(u8 temp);
+void LED_SetBatVolInd_10S(uint8_t temp);
 void LED_BatVolIndCtrDec(void);
 
 #endif

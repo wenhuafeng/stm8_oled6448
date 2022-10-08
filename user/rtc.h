@@ -2,13 +2,13 @@
 #define _RTC_H_
 
 typedef struct {
-    u8 sec;
-    u8 min;
-    u8 hour;
-    u8 day;
-    u8 week;
-    u8 month;
-    u16 year;
+    uint8_t sec;
+    uint8_t min;
+    uint8_t hour;
+    uint8_t day;
+    uint8_t week;
+    uint8_t month;
+    uint16_t year;
 } rtc_counter_value_t;
 
 OS_EXT FlagStatus F_500MS;
@@ -19,7 +19,7 @@ OS_EXT FlagStatus F_1MIN;
 OS_EXT FlagStatus Time_format; //=0,24HR. =1,12HR.
 OS_EXT FlagStatus F_DM_MD;     //=0,DM. =1,MD.
 
-OS_EXT u8 MinCtr;
+OS_EXT uint8_t MinCtr;
 
 extern rtc_counter_value_t TIME;
 
@@ -37,11 +37,11 @@ OS_EXT Flag_AM F_AM_PM;
 
 void RTC_Init_Software();
 void TimeInit();
-INT8U TimeFormat(INT8U hour);
+uint8_t TimeFormat(uint8_t hour);
 void Time_Deal();
 void Date_Deal();
-INT8U Date_Day(INT16U Year, INT8U Month);
-void Week_Deal(INT16U Year, INT8U Month, INT8U Day);
+uint8_t Date_Day(uint16_t Year, uint8_t Month);
+void Week_Deal(uint16_t Year, uint8_t Month, uint8_t Day);
 
 #if 0
 void MIN_INC (void);

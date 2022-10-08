@@ -12,14 +12,14 @@
 #define _TEMP_MIN_       (0000)
 #define _TEMP_MAX_       (1600)
 
-//INT16S InTemp_C;
-//INT16S InMaxTemp_C;
-//INT16S InMinTemp_C;
+//int16_t InTemp_C;
+//int16_t InMaxTemp_C;
+//int16_t InMinTemp_C;
 
 //FlagStatus F_TempOnOff;
 //CF_Flag F_CF;//= 1 is F,= 0 is C.
 //FlagStatus F_InTempFirstTest;
-//INT8U TempStep;
+//uint8_t TempStep;
 
 /********************************************************************/ /**
  * @brief:      Temprature table
@@ -28,7 +28,7 @@
  *
  * @return:     NONE
  *********************************************************************/
-const u16 TempAD_Tab[_TEMP_TOTAL_NUM_] = {
+const uint16_t TempAD_Tab[_TEMP_TOTAL_NUM_] = {
     /*
   55240,//-10
   52348,//-9
@@ -223,11 +223,11 @@ const u16 TempAD_Tab[_TEMP_TOTAL_NUM_] = {
  *
  * @return:     NONE
  *********************************************************************/
-u16 GetTemperatureAdcValue(void)
+uint16_t GetTemperatureAdcValue(void)
 {
-    u8 i;
-    u16 adBuf[5];
-    u16 adVal;
+    uint8_t i;
+    uint16_t adBuf[5];
+    uint16_t adVal;
 
     for (i = 0; i < 5; i++) {
         adBuf[i] = ADConversion(ADC_Channel_17);
@@ -249,11 +249,11 @@ u16 GetTemperatureAdcValue(void)
  *
  * @return:    NONE
  *********************************************************************/
-INT16S ReadTemperatureSensor(void)
+int16_t ReadTemperatureSensor(void)
 {
-    u8 i;
-    s16 temp = _TEMP_MIN_;
-    u16 adVal;
+    uint8_t i;
+    int16_t temp = _TEMP_MIN_;
+    uint16_t adVal;
     FP32 Voltage;
     FP32 NTC_Resistance;
 
@@ -261,7 +261,7 @@ INT16S ReadTemperatureSensor(void)
 
     Voltage        = adVal * TVGain * _ADC_REF_VOL_ / _ADC_BIT_NUM_;
     NTC_Resistance = Voltage * _NTC_PULL_UP_ / (_ADC_REF_VOL_ - Voltage);
-    adVal          = (u16)(NTC_Resistance / 10);
+    adVal          = (uint16_t)(NTC_Resistance / 10);
 
     //lock-up table
     for (i = 0; i < _TEMP_TOTAL_NUM_; i++) {

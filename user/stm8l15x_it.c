@@ -127,7 +127,7 @@ INTERRUPT_HANDLER(DMA1_CHANNEL2_3_IRQHandler, 3)
   */
 INTERRUPT_HANDLER(RTC_CSSLSE_IRQHandler, 4)
 {
-    static u8 i;
+    static uint8_t i;
 
     /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
@@ -294,9 +294,9 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
     /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-    static u8 PumpCtr;
-    static u8 HeatSpeedCtr;
-    u16 tmp;
+    static uint8_t PumpCtr;
+    static uint8_t HeatSpeedCtr;
+    uint16_t tmp;
 
     if (F_AC_DC_PUMP) {
         //#if (_AC_DC_PUMP_ == _AC_PUMP_)
@@ -448,10 +448,10 @@ INTERRUPT_HANDLER(TIM3_UPD_OVF_TRG_BRK_USART3_TX_IRQHandler, 21)
     /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-    //static u8 i;
-    static u8 Ctr;
-    static u8 Ctr1;
-    static u8 Ctr2;
+    //static uint8_t i;
+    static uint8_t Ctr;
+    static uint8_t Ctr1;
+    static uint8_t Ctr2;
 
     if (TIM3_GetITStatus(TIM3_IT_Update) == SET) {
         TIM3_ClearITPendingBit(TIM3_IT_Update);
@@ -573,7 +573,7 @@ INTERRUPT_HANDLER(USART1_RX_TIM5_CC_IRQHandler, 28)
   */
 
 #if (_UART_FUNC_)
-    u8 i;
+    uint8_t i;
 
     if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET) {
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);

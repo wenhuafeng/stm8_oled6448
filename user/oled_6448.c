@@ -280,7 +280,7 @@ void OLED_Init(void)
 //==============================================================================
 //==============================================================================
 /*
-void LCD_P8x16Str(u8 *Tbl)
+void LCD_P8x16Str(uint8_t *Tbl)
 {
   uint8_t c,i,j;
   uint8_t x,y,z;
@@ -312,7 +312,7 @@ void LCD_P8x16Str(u8 *Tbl)
 
 //==============================================================================
 //==============================================================================
-void LCD_P8x16Str(u8 *Tbl)
+void LCD_P8x16Str(uint8_t *Tbl)
 {
     uint8_t c, i, z;
     static uint8_t x      = 128 / 4;
@@ -384,7 +384,7 @@ void OledDisp(void)
     Tbl[6] = ' ';                      //HexToAsc(FlowMeterCtr%100%10);
     Tbl[7] = ' ';
     //line 2
-    tmp     = (u16)Temperature;
+    tmp     = (uint16_t)Temperature;
     Tbl[8]  = '2';
     Tbl[9]  = ':';
     Tbl[10] = HexToAsc(tmp / 1000 % 10);

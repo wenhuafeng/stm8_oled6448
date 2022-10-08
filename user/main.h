@@ -28,43 +28,43 @@ OS_EXT FlagStatus F_Heat;
 #define _TIME_BASE_xMS_ (10)
 
 #define _VENT_DELAY_ (1000 / _TIME_BASE_xMS_)
-OS_EXT u16 VentDelay;
+OS_EXT uint16_t VentDelay;
 
 #define _15S_ (15000 / _TIME_BASE_xMS_)
-OS_EXT u16 Ctr15S;
+OS_EXT uint16_t Ctr15S;
 
 #define _1S_ (1000 / _TIME_BASE_xMS_)
 
-OS_EXT u8 PumpSpeed;
-OS_EXT u8 AutoHeaterCtr;
+OS_EXT uint8_t PumpSpeed;
+OS_EXT uint8_t AutoHeaterCtr;
 
 OS_EXT FlagStatus F_PowerUp;
 
-OS_EXT s16 Temperature;
+OS_EXT int16_t Temperature;
 
-OS_EXT u8 ThyristorCtr;
+OS_EXT uint8_t ThyristorCtr;
 
-OS_EXT u16 FlowMeterCtr;
+OS_EXT uint16_t FlowMeterCtr;
 
-OS_EXT u16 KnobSwitchAdvalue;
+OS_EXT uint16_t KnobSwitchAdvalue;
 
 #define _AC_PUMP_ (SET)
 #define _DC_PUMP_ (RESET)
 OS_EXT FlagStatus F_AC_DC_PUMP;
 
-OS_EXT u16 SecCtr;
+OS_EXT uint16_t SecCtr;
 
 #define _CONTINOUS_READ_NUM_OUT_ 10000
 #define _CONTINOUS_READ_NUM_IN_  1000
-OS_EXT u16 ContinousRead220VCtr_1;
-OS_EXT u16 ContinousRead220VCtr_2;
-OS_EXT u8 F_220V_OUT;
-OS_EXT u8 F_220V_IN;
+OS_EXT uint16_t ContinousRead220VCtr_1;
+OS_EXT uint16_t ContinousRead220VCtr_2;
+OS_EXT uint8_t F_220V_OUT;
+OS_EXT uint8_t F_220V_IN;
 
 OS_EXT FlagStatus F_ADC1_ConversionComplete;
 
-OS_EXT u8 HeatSpeed;
-void TempHeatControl(s16 Temp);
+OS_EXT uint8_t HeatSpeed;
+void TempHeatControl(int16_t Temp);
 
 void CtrFunc(void);
 void V220_Detect(void);

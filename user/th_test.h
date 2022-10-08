@@ -39,15 +39,15 @@ enum {
 typedef enum { _C_ = 0, _F_ } CF_Flag;
 extern CF_Flag F_CF;
 
-extern INT16S InTemp_C;
-extern INT16S InMaxTemp_C;
-extern INT16S InMinTemp_C;
+extern int16_t InTemp_C;
+extern int16_t InMaxTemp_C;
+extern int16_t InMinTemp_C;
 
 extern FlagStatus F_InTempFirstTest;
 extern FlagStatus F_TempOnOff;
-extern INT8U TempStep;
+extern uint8_t TempStep;
 
-INT16S ReadTemperatureSensor(void);
+int16_t ReadTemperatureSensor(void);
 void ProcessTemperatureFunction(void);
 
 #endif

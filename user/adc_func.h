@@ -3,12 +3,12 @@
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-void SetPwmDuty(u16 temp);
-u16 KnobSwitch(void);
-u8 GetKnobSwitchLevel(void);
+void SetPwmDuty(uint16_t temp);
+uint16_t KnobSwitch(void);
+uint8_t GetKnobSwitchLevel(void);
 
-void SortRoutine(INT16U a[], INT8U num);
-INT16U GetAverageValue(INT16U *ptr, INT8U num);
-u16 ADConversion(ADC_Channel_TypeDef channel);
+void SortRoutine(uint16_t a[], uint8_t num);
+uint16_t GetAverageValue(uint16_t *ptr, uint8_t num);
+uint16_t ADConversion(ADC_Channel_TypeDef channel);
 
 #endif

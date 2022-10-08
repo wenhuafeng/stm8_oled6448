@@ -13,7 +13,7 @@
 /* Head files */
 #include "common.h"
 
-CONST u8 Version[3] = "300";
+CONST uint8_t Version[3] = "300";
 
 //##############################################################################
 #warning message "Software_Version: <V300>"
@@ -149,7 +149,7 @@ void CtrFunc(void)
 }
 
 //------------------------------------------------------------------------------
-void TempHeatControl(s16 Temp)
+void TempHeatControl(int16_t Temp)
 {
     if (F_PushKey == SET) {
         if (Temp < 1200) {

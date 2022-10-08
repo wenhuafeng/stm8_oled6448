@@ -2,33 +2,33 @@
 //                                                       //
 //      FileName:   NTC.h                                //
 //      time:2018-9-18                                   //
-//      Author:Õñ°î                                      //
+//      Author:ï¿½ï¿½ï¿½                                      //
 ///////////////////////////////////////////////////////////
 
 #ifndef _NTC_H_
 #define _NTC_H_
 
 typedef struct TEMP_TPR {
-    s16 tempVal;
-    U8 err;
-    U8 adCNT;
-    U8 adERR;
-    u8 errcnt;
+    int16_t tempVal;
+    uint8_t err;
+    uint8_t adCNT;
+    uint8_t adERR;
+    uint8_t errcnt;
 
-    U16 adMIN;
-    U16 adMAX;
-    U16 adSUM;
+    uint16_t adMIN;
+    uint16_t adMAX;
+    uint16_t adSUM;
 } TEMP_STRUCT;
 
-OS_EXT TEMP_STRUCT tprBoil; //¹øÂ¯ÎÂ¶È
-//OS_EXT TEMP_STRUCT  tprPTC;            //±£ÎÂÅÌPTCÎÂ¶È
-//OS_EXT TEMP_STRUCT  tprWaterout;        //³öË®ÎÂ¶È
+OS_EXT TEMP_STRUCT tprBoil; //ï¿½ï¿½Â¯ï¿½Â¶ï¿½
+//OS_EXT TEMP_STRUCT  tprPTC;            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PTCï¿½Â¶ï¿½
+//OS_EXT TEMP_STRUCT  tprWaterout;        //ï¿½ï¿½Ë®ï¿½Â¶ï¿½
 
 //#define AIN_TPR_PTC          1
 //#define AIN_TPR_BOIL         9
 //#define AIN_TPR_WATEROUT     2
 
-#define TMPRREF(X) ((S16)((X)*10.0))
+#define TMPRREF(X) ((int16_t)((X)*10.0))
 
 //------------------------------------------------------------------------------
 void NTC_Init(void);

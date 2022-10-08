@@ -21,7 +21,7 @@ void TimeInit(void)
 }
 
 /*
-INT8U TimeFormat(INT8U hour)
+uint8_t TimeFormat(uint8_t hour)
 {
   if (Time_format) { // format = 1 12HR
     if (hour == 0) {
@@ -68,10 +68,10 @@ void Time_Deal(void)
     }
 }
 
-INT8U Date_Day(INT16U Year, INT8U Month)
+uint8_t Date_Day(uint16_t Year, uint8_t Month)
 {
-    INT8U day_temp;
-    INT8U const_days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    uint8_t day_temp;
+    uint8_t const_days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
     if (Month == 2) {
         if (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0)) {
@@ -86,12 +86,12 @@ INT8U Date_Day(INT16U Year, INT8U Month)
     return day_temp;
 }
 
-void Week_Deal(INT16U Year, INT8U Month, INT8U Day)
+void Week_Deal(uint16_t Year, uint8_t Month, uint8_t Day)
 {
-    INT16S temp_year = 0;
-    INT8S temp_cen   = 0;
-    INT8S temp_month = 0;
-    INT8S week_data;
+    int16_t temp_year = 0;
+    int8_t temp_cen   = 0;
+    int8_t temp_month = 0;
+    int8_t week_data;
 
     if (Month < 3) {
         temp_month = Month + 12;
@@ -230,7 +230,7 @@ void DAY_DEC (void)
 void MONTH_INC (void)
 {
   //BOOLEAN F_tmp;
-  INT8U MaxDay;
+  uint8_t MaxDay;
 
   if (++TIME.month >= 13) {
     TIME.month = 1;
@@ -258,7 +258,7 @@ void MONTH_INC (void)
 void MONTH_DEC (void)
 {
   //BOOLEAN F_tmp;
-  INT8U MaxDay;
+  uint8_t MaxDay;
 
   if (--TIME.month == 0) {
     TIME.month = 12;
@@ -286,7 +286,7 @@ void MONTH_DEC (void)
 void YEAR_INC (void)
 {
   //BOOLEAN F_tmp;
-  INT8U MaxDay;
+  uint8_t MaxDay;
 
   if (++TIME.year > 2099) {
     TIME.year = 2000;
@@ -314,7 +314,7 @@ void YEAR_INC (void)
 void YEAR_DEC (void)
 {
   //BOOLEAN F_tmp;
-  INT8U MaxDay;
+  uint8_t MaxDay;
 
   if (--TIME.year == 1999) {
     TIME.year = 2099;

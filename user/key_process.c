@@ -12,8 +12,8 @@
  *********************************************************************/
 void ScanKey(void)
 {
-    //u8 i,j;
-    //u8 l;
+    //uint8_t i,j;
+    //uint8_t l;
 
     //l = _KEY_PORT_2_;
     //l = (l & _ALL_KEY_MASK_2_);
@@ -164,7 +164,7 @@ void PushKeyFunc(void)
  *********************************************************************/
 void ReleKeyFunc(void)
 {
-    INT8U tmp;
+    uint8_t tmp;
 
     tmp    = OldKey;
     OldKey = 0x00;

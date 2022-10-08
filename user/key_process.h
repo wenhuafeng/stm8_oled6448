@@ -25,15 +25,15 @@ enum {
 #define _ALL_KEY_MASK_ 0x08
 
 #define _HOLD_TIMER_KEY_ 4
-OS_EXT INT8U HoldKeyCtr;
+OS_EXT uint8_t HoldKeyCtr;
 
 OS_EXT FlagStatus F_Key;
 OS_EXT FlagStatus F_PushKey;
 OS_EXT FlagStatus F_NewKey;
 OS_EXT FlagStatus F_HoldKey;
 OS_EXT FlagStatus F_TwoKey;
-OS_EXT INT8U Key;
-OS_EXT INT8U OldKey;
+OS_EXT uint8_t Key;
+OS_EXT uint8_t OldKey;
 
 //---------------------------------------
 //timer
