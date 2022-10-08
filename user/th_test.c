@@ -233,13 +233,6 @@ uint16_t GetTemperatureAdcValue(void)
     return adVal;
 }
 
-/********************************************************************/ /**
- * @brief:     Read Temp Sensor
- *
- * @param[in]: NONE
- *
- * @return:    NONE
- *********************************************************************/
 int16_t ReadTemperatureSensor(void)
 {
     uint8_t i;
@@ -272,5 +265,9 @@ int16_t ReadTemperatureSensor(void)
 
     return temp;
 }
+
+#else
+
+int16_t ReadTemperatureSensor(void);
 
 #endif

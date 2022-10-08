@@ -3,8 +3,6 @@
 #include "common.h"
 #endif
 
-#if (_MY_PRINTF_FUNC_)
-
 #define BAUDRATE 115200
 #define SIZE     128
 
@@ -16,19 +14,17 @@ typedef struct uart_rxbuf_s {
 uart_rxbuf_t g_uart_rxbuf;
 
 //------------------------------------------------------------------------------
-int putchar(int c)
-{
-    if ('\n' == (char)c) {
-        USART_SendData8(USART1, '\r');
-        while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
-            ;
-    }
-    USART_SendData8(USART1, c);
-    while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
-        ;
-
-    return (c);
-}
+//int putchar(int c)
+//{
+//    if ('\n' == (char)c) {
+//        USART_SendData8(USART1, '\r');
+//        while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+//    }
+//    USART_SendData8(USART1, c);
+//    while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+//
+//    return (c);
+//}
 
 void uart_send(char *buf, int len)
 {
@@ -47,20 +43,20 @@ void uart_send(char *buf, int len)
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 }
 
-int uart_getchar(void)
-{
-    int c;
-
-    while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET)
-        ;
-    c = USART_ReceiveData8(USART1);
-
-    USART_SendData8(USART1, c);
-    while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
-        ;
-
-    return (c);
-}
+//int uart_getchar(void)
+//{
+//    int c;
+//
+//    while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET)
+//        ;
+//    c = USART_ReceiveData8(USART1);
+//
+//    USART_SendData8(USART1, c);
+//    while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
+//        ;
+//
+//    return (c);
+//}
 
 void uart_rx_data(void)
 {
@@ -80,9 +76,3 @@ void uart_rx_data(void)
         }
     }
 }
-
-#else
-
-void uart_rx_data(void) {}
-
-#endif

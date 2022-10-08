@@ -412,5 +412,7 @@ void OledDisp(void)
 #else
 
 void LCD_P8x16Str(void) {}
+void OLED_Init(void) {}
+void OledDisp(void) {}
 
 #endif

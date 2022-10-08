@@ -146,9 +146,7 @@ static void PushKeyFunc(void)
             if (HoldKeyCom()) {
             } else {
                 if (F_NewKey == 1) {
-#if (_DELAY_3S_VENT_)
                     VentDelay = 0x00;
-#endif
                     F_Vent = SET;
                 }
             }
@@ -175,14 +173,8 @@ static void ReleKeyFunc(void)
 
     switch (tmp) {
         case _KEY_1_:
-#if (_DELAY_3S_VENT_)
             VentDelay     = _VENT_DELAY_; //(500/10);//0.5S
             F_WaterPumpOn = RESET;
-#else
-            VENT_PIN_LOW();
-            F_Vent        = RESET;
-            F_WaterPumpOn = RESET;
-#endif
             break;
         case _KEY_2_:
             //if (SettingCom()) {

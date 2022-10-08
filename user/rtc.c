@@ -3,12 +3,8 @@
 #include "common.h"
 #endif
 
-#if (_SOFTWARE_RTC_)
-
-//RTC define
 rtc_counter_value_t TIME;
 
-//Init year,month,day,hour,min,sec
 void TimeInit(void)
 {
     TIME.year  = 2018;
@@ -20,23 +16,6 @@ void TimeInit(void)
     TIME.sec  = 0;
 }
 
-/*
-uint8_t TimeFormat(uint8_t hour)
-{
-  if (Time_format) { // format = 1 12HR
-    if (hour == 0) {
-            return (12);
-    } else if (hour >12) {
-            return (hour - 12);
-    } else {
-            return (hour);
-    }
-  } else { // format = 0 24HR
-    return (hour);
-  }
-}*/
-
-//Time running hour,min,sec
 void Time_Deal(void)
 {
     TIME.sec++;
@@ -60,10 +39,6 @@ void Time_Deal(void)
                 }
                 Week_Deal(TIME.year, TIME.month, TIME.day); //week
             }
-
-            //if ((TIME.hour == 2 || TIME.hour == 14) && flag_rdstime_on) {
-            //  flag_auto_time_on = 1;
-            //}
         }
     }
 }
@@ -107,8 +82,4 @@ void Week_Deal(uint16_t Year, uint8_t Month, uint8_t Day)
     week_data = temp_year + temp_year / 4 + temp_cen / 4;
     week_data = week_data - 2 * temp_cen + 26 * (temp_month + 1) / 10 + Day - 1;
     TIME.week = (week_data + 140) % 7;
-
-    //return week_data;
 }
-
-#endif

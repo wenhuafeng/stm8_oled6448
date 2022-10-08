@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.c": "c",
-        "common.h": "c"
+        "common.h": "c",
+        "oled_6448.h": "c"
     }
 }

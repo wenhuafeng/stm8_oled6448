@@ -1610,19 +1610,7 @@
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_adc.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_aes.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_beep.c</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_clk.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_comp.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_dac.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_dma.c</name>
@@ -1646,12 +1634,6 @@
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_itc.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_iwdg.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_lcd.c</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_pwr.c</name>
         </file>
         <file>
@@ -1667,28 +1649,13 @@
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_syscfg.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_tim1.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_tim2.c</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_tim3.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_tim4.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_tim5.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_usart.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_wfe.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_wwdg.c</name>
         </file>
     </group>
     <group>
@@ -1707,6 +1674,9 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\user\main.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\my_printf.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\user\oled_6448.c</name>

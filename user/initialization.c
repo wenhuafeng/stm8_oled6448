@@ -14,6 +14,8 @@
 #define BUFFER_ADDRESS ((uint16_t)(&ADC_BUFFER.Buffer[0])) //((uint16_t)(&Buffer))
 #define ASCII_NUM_0    ((uint8_t)48)
 
+#define BAUDRATE 115200
+
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 //uint16_t Buffer[BUFFER_SIZE];
@@ -90,12 +92,10 @@ void CLK_Config_HSI(void)
     /* Switch the clock to HSI*/
     CLK_SYSCLKDivConfig(CLK_SYSCLKDiv_1);
     CLK_HSICmd(ENABLE);
-    while (((CLK->ICKCR) & 0x02) != 0x02)
-        ;
+    while (((CLK->ICKCR) & 0x02) != 0x02);
     CLK_SYSCLKSourceConfig(CLK_SYSCLKSource_HSI);
     CLK_SYSCLKSourceSwitchCmd(ENABLE);
-    while (((CLK->SWCR) & 0x01) == 0x01)
-        ;
+    while (((CLK->SWCR) & 0x01) == 0x01);
 
     CLK_HSEConfig(CLK_HSE_OFF);
     CLK_LSEConfig(CLK_LSE_OFF);
@@ -187,7 +187,6 @@ static void DMA_Config(void)
 
   ADC_SoftwareStartConv(ADC1);
 }
-#endif
 
 /**
   * @brief  Configure TIM2 peripheral
@@ -223,6 +222,7 @@ static void TIM2_Config(void)
     /* TIM2 counter enable */
     TIM2_Cmd(ENABLE);
 }
+#endif
 
 /**
   * @brief  Configure TIM3 peripheral
@@ -256,7 +256,6 @@ static void TIM3_Config(void)
     TIM3_Cmd(ENABLE);
 }
 
-#if (_MY_PRINTF_FUNC_ || _SYS_PRINTF_FUNC_)
 static void USART_Config(void)
 {
     /* Enable USART1 clock */
@@ -280,7 +279,6 @@ static void USART_Config(void)
     /* USART1 Rx INT Enable */
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 }
-#endif
 
 void EXTI_Config(void)
 {
@@ -368,9 +366,7 @@ void Sys_Init(void)
     EXTI_Config();
     ADC_Config();
     //DMA_Config();
-    TIM2_Config();
+    //TIM2_Config();
     TIM3_Config();
-#if (_UART_FUNC_)
     USART_Config();
-#endif
 }

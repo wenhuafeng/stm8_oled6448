@@ -332,9 +332,6 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
         asm("nop");
     }
 
-#if (!_AC_DC_PUMP_)
-    PUMP_PIN_LOW();
-#endif
     HEAT_PIN_LOW();
 
     //RUN_LED_TOGGLE();//TEST

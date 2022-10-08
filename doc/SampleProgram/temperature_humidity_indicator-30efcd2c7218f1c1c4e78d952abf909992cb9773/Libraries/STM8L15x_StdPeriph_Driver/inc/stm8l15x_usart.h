@@ -17,13 +17,13 @@
   *
   *        http://www.st.com/software_license_agreement_liberty_v2
   *
-  * Unless required by applicable law or agreed to in writing, software 
-  * distributed under the License is distributed on an "AS IS" BASIS, 
+  * Unless required by applicable law or agreed to in writing, software
+  * distributed under the License is distributed on an "AS IS" BASIS,
   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   * See the License for the specific language governing permissions and
   * limitations under the License.
   *
-  ******************************************************************************  
+  ******************************************************************************
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -39,8 +39,8 @@
   */
 /** @addtogroup USART
   * @{
-  */ 
-  
+  */
+
 /* Exported types ------------------------------------------------------------*/
 
 /** @defgroup USART_Exported_Types
@@ -50,8 +50,8 @@
 /** @defgroup USART_Flags
   * @{
   */
-typedef enum 
-{ 
+typedef enum
+{
  USART_FLAG_TXE   = (uint16_t)0x0080, /*!< Transmit Data Register Empty flag */
  USART_FLAG_TC    = (uint16_t)0x0040, /*!< Transmission Complete flag */
  USART_FLAG_RXNE  = (uint16_t)0x0020, /*!< Read Data Register Not Empty flag */
@@ -73,9 +73,9 @@ typedef enum
    ((Flag) == USART_FLAG_FE) || \
    ((Flag) == USART_FLAG_PE) || \
    ((Flag) == USART_FLAG_SBK))
-   
+
 #define IS_USART_CLEAR_FLAG(Flag) (((Flag) == USART_FLAG_TC))
-   
+
 /**
   * @}
   */
@@ -83,7 +83,7 @@ typedef enum
 /** @defgroup USART_Interrupts
   * @{
   */
-    
+
 /**
   * @brief USART Interrupt definition
   * USART_IT possible values
@@ -92,8 +92,8 @@ typedef enum
   *   Y: Flag position
   *   Z: Register index
   */
-typedef enum 
-{ 
+typedef enum
+{
   USART_IT_TXE        = (uint16_t)0x0277, /*!< Transmit interrupt */
   USART_IT_TC         = (uint16_t)0x0266, /*!< Transmission Complete interrupt */
   USART_IT_RXNE       = (uint16_t)0x0255, /*!< Receive interrupt */
@@ -126,7 +126,7 @@ typedef enum
 /**
   * @}
   */
-  
+
 /** @defgroup USART_Wakeup_Modes
   * @{
   */
@@ -141,7 +141,7 @@ typedef enum
 /**
   * @}
   */
-  
+
 /** @defgroup USART_Stop_Bits
   * @{
   */
@@ -158,7 +158,7 @@ typedef enum
 /**
   * @}
   */
-  
+
 /** @defgroup USART_Parity
   * @{
   */
@@ -175,8 +175,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_Lin_Break_Detection_Length 
+
+/** @defgroup USART_Lin_Break_Detection_Length
   * @{
   */
 typedef enum
@@ -188,8 +188,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_Word_Length 
+
+/** @defgroup USART_Word_Length
   * @{
   */
 typedef enum
@@ -200,12 +200,12 @@ typedef enum
 
 #define IS_USART_WORDLENGTH(WordLength) (((WordLength) == USART_WordLength_8b) || \
                                          ((WordLength) == USART_WordLength_9b))
-   
+
 /**
   * @}
   */
-  
-/** @defgroup USART_Mode 
+
+/** @defgroup USART_Mode
   * @{
   */
 typedef enum
@@ -218,8 +218,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_DMA_Requests 
+
+/** @defgroup USART_DMA_Requests
   * @{
   */
 typedef enum
@@ -232,8 +232,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_IrDA_Mode 
+
+/** @defgroup USART_IrDA_Mode
   * @{
   */
 typedef enum
@@ -247,8 +247,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_Clock 
+
+/** @defgroup USART_Clock
   * @{
   */
 typedef enum
@@ -261,8 +261,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_Clock_Polarity 
+
+/** @defgroup USART_Clock_Polarity
   * @{
   */
 typedef enum
@@ -275,8 +275,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_Clock_Phase 
+
+/** @defgroup USART_Clock_Phase
   * @{
   */
 typedef enum
@@ -289,8 +289,8 @@ typedef enum
 /**
   * @}
   */
-  
-/** @defgroup USART_LastBit 
+
+/** @defgroup USART_LastBit
   * @{
   */
 typedef enum
@@ -308,7 +308,7 @@ typedef enum
 /**
   * @}
   */
-  
+
 /* Exported constants --------------------------------------------------------*/
 /* Exported macros -----------------------------------------------------------*/
 /** @defgroupUSART_Exported_Macros
@@ -328,8 +328,8 @@ typedef enum
   */
 
 /* Exported functions ------------------------------------------------------- */
-	
-/*  Function used to set the USART configuration to the default reset state ***/ 
+
+/*  Function used to set the USART configuration to the default reset state ***/
 void USART_DeInit(USART_TypeDef* USARTx);
 
 /* Initialization and Configuration functions *********************************/
@@ -343,7 +343,7 @@ void USART_Cmd(USART_TypeDef* USARTx, FunctionalState NewState);
 void USART_SetPrescaler(USART_TypeDef* USARTx, uint8_t USART_Prescaler);
 void USART_SendBreak(USART_TypeDef* USARTx);
 
-/* Data transfers functions ***************************************************/ 
+/* Data transfers functions ***************************************************/
 void USART_SendData8(USART_TypeDef* USARTx, uint8_t Data);
 void USART_SendData9(USART_TypeDef* USARTx, uint16_t Data);
 uint8_t USART_ReceiveData8(USART_TypeDef* USARTx);
@@ -385,7 +385,7 @@ void USART_ClearITPendingBit(USART_TypeDef* USARTx, USART_IT_TypeDef USART_IT);
 /**
   * @}
   */
-  
+
 /**
   * @}
   */

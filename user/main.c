@@ -39,12 +39,7 @@ void main(void)
     enableInterrupts();
 
     DelayMs(100);
-#if (_OLED_6448_)
     OLED_Init();
-#endif
-#if (_NTC_)
-    NTC_Init();
-#endif
 
     do {
         if (F_ADC1_ConversionComplete) {
@@ -69,29 +64,19 @@ void main(void)
             } else {
                 SetPwmDuty(221);
             }
-#if (_TH_)
+
             Temperature = ReadTemperatureSensor();
             TempHeatControl(Temperature);
-#endif
-#if (_NTC_)
-            NTC_Check();
-#endif
         }
         if (F_500MS) {
             F_500MS = RESET;
-#if (_OLED_6448_)
             OledDisp();
-#endif
         }
-#if (_SOFTWARE_RTC_)
         if (F_1S) {
             F_1S = RESET;
             Time_Deal();
         }
-#endif
-        //V220_Detect();
-        //LowPowerRunMode();
-        //AutomaticHeatingFunc();
+
         LED_Management();
         ScanKey();
         KEY_Process();
@@ -118,7 +103,6 @@ void LED_Management(void)
 //------------------------------------------------------------------------------
 void CtrFunc(void)
 {
-#if (_DELAY_3S_VENT_)
     if (VentDelay) {
         VentDelay--;
         if (VentDelay == 0x00) {
@@ -126,7 +110,6 @@ void CtrFunc(void)
             F_Vent = RESET;
         }
     }
-#endif
 }
 
 #ifdef USE_FULL_ASSERT
