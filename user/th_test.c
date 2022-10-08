@@ -12,15 +12,6 @@
 #define _TEMP_MIN_       (0000)
 #define _TEMP_MAX_       (1600)
 
-//int16_t InTemp_C;
-//int16_t InMaxTemp_C;
-//int16_t InMinTemp_C;
-
-//FlagStatus F_TempOnOff;
-//CF_Flag F_CF;//= 1 is F,= 0 is C.
-//FlagStatus F_InTempFirstTest;
-//uint8_t TempStep;
-
 /********************************************************************/ /**
  * @brief:      Temprature table
  *
@@ -254,8 +245,8 @@ int16_t ReadTemperatureSensor(void)
     uint8_t i;
     int16_t temp = _TEMP_MIN_;
     uint16_t adVal;
-    FP32 Voltage;
-    FP32 NTC_Resistance;
+    float Voltage;
+    float NTC_Resistance;
 
     adVal = GetTemperatureAdcValue();
 

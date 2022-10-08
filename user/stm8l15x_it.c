@@ -299,10 +299,7 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
     uint16_t tmp;
 
     if (F_AC_DC_PUMP) {
-        //#if (_AC_DC_PUMP_ == _AC_PUMP_)
         if (GPIO_ReadInputDataBit(OVER_ZERO_PORT, OVER_ZERO_PIN)) {
-            //if (F_Protection == 0) {
-            //if (F_15S) {
             if (!F_Pump) {
                 PumpCtr++;
                 if (PumpCtr > PumpSpeed) {
@@ -316,23 +313,7 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
                 F_Pump  = RESET;
                 PumpCtr = 0x00;
             }
-            //}
-            //}
         }
-        /*
-    #else
-      //if (F_15S) {
-        PumpCtr++;
-        if (PumpCtr > PumpSpeed) {
-          PumpCtr = 0x00;
-          if (F_WaterPumpOn) {
-            PUMP_PIN_HIGH();
-            F_Pump = SET;
-          }
-        }
-      //}
-    #endif
-    */
     }
 
     if (F_Heat) {
@@ -350,7 +331,6 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
         asm("nop");
         asm("nop");
     }
-    //ThyristorCtr = 200;
 
 #if (!_AC_DC_PUMP_)
     PUMP_PIN_LOW();
@@ -570,25 +550,9 @@ INTERRUPT_HANDLER(USART1_RX_TIM5_CC_IRQHandler, 28)
 {
     /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
-  */
+    */
 
-#if (_UART_FUNC_)
-    uint8_t i;
-
-    if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET) {
-        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
-        if (g_uart_rxbuf.len >= sizeof(g_uart_rxbuf.buf)) {
-            USART_ReceiveData8(USART1);
-            return;
-            //goto enable_rx_int;
-        }
-        i                                    = USART_ReceiveData8(USART1);
-        g_uart_rxbuf.buf[g_uart_rxbuf.len++] = i;
-        if (i == '5') {
-            uart_send("ABC", 3);
-        }
-    }
-#endif
+    uart_rx_data();
 
     //enable_rx_int:
     //USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);

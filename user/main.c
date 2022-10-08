@@ -45,11 +45,6 @@ void main(void)
 #if (_NTC_)
     NTC_Init();
 #endif
-    //PowerOnHeat15S();
-    F_PowerUp = SET;
-
-    //TEST
-    //TEST
 
     do {
         if (F_ADC1_ConversionComplete) {
@@ -58,9 +53,7 @@ void main(void)
         if (F_10MS) {
             F_10MS = RESET;
             CtrFunc();
-#if (_OLED_6448_)
-            LCD_P8x16Str(Tbl);
-#endif
+            LCD_P8x16Str();
         }
         if (F_200MS) {
             F_200MS   = RESET;
@@ -94,10 +87,6 @@ void main(void)
         if (F_1S) {
             F_1S = RESET;
             Time_Deal();
-#if (_UART_FUNC_)
-            //uart_send("abc", 3);
-            uart_send((&ADC_BUFFER.Buf.adc_buf[0]), 3 * 2);
-#endif
         }
 #endif
         //V220_Detect();
@@ -105,15 +94,7 @@ void main(void)
         //AutomaticHeatingFunc();
         LED_Management();
         ScanKey();
-        if (F_PushKey) {
-            if ((Key < _MAX_KEY_) && (Key != _NO_KEY_)) {
-                PushKeyFunc();
-            }
-        } else {
-            if ((OldKey < _MAX_KEY_) && (OldKey != _NO_KEY_)) {
-                ReleKeyFunc();
-            }
-        }
+        KEY_Process();
     } while (1);
 }
 
@@ -146,64 +127,6 @@ void CtrFunc(void)
         }
     }
 #endif
-}
-
-//------------------------------------------------------------------------------
-void TempHeatControl(int16_t Temp)
-{
-    if (F_PushKey == SET) {
-        if (Temp < 1200) {
-            HeatSpeed = 0;
-        } else if (Temp < 1300) {
-            HeatSpeed = 0;
-        } else if (Temp < 1400) {
-            HeatSpeed = 0;
-        }
-
-        if (Temp > 1000) {
-            F_WaterPumpOn = SET;
-        } else {
-            F_WaterPumpOn = RESET;
-        }
-
-        if (F_Heat == SET) {
-            if (Temp > 1500) {
-                F_Heat = RESET;
-            }
-        } else {
-            //if (F_PushKey == SET) {
-            if (F_Heat == RESET) {
-                if (Temp < 1400) {
-                    F_Heat = SET;
-                }
-            }
-            //}
-        }
-    } else {
-        if (Temp < 1000) {
-            HeatSpeed = 0;
-        } else if (Temp < 1100) {
-            HeatSpeed = 2;
-        } else if (Temp < 1200) {
-            HeatSpeed = 4;
-        } else {
-            HeatSpeed = 4;
-        }
-
-        if (F_Heat == SET) {
-            if (Temp > 1200) {
-                F_Heat = RESET;
-            }
-        } else {
-            //if (F_PushKey == SET) {
-            if (F_Heat == RESET) {
-                if (Temp < 1100) {
-                    F_Heat = SET;
-                }
-            }
-            //}
-        }
-    }
 }
 
 #ifdef USE_FULL_ASSERT

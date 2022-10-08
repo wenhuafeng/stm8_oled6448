@@ -11,7 +11,6 @@
 #define _AC_DC_PUMP_    1
 #define _DELAY_3S_VENT_ 1
 #define _TH_            1
-#define _NTC_           0
 #define _OLED_6448_     1
 #define _SOFTWARE_RTC_  1
 
@@ -32,10 +31,12 @@
 //#include "delay.h"
 #include "main.h"
 #include "gp_sub.h"
+#include "uart.h"
 #include "initialization.h"
 //#include "stm8l_low_power.h"
 #include "adc_func.h"
 #include "key_process.h"
+#include "port_define.h"
 
 #if (_TH_)
 #include "TH_TEST.h"

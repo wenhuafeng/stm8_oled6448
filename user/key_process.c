@@ -3,13 +3,40 @@
 #include "common.h"
 #endif
 
-/********************************************************************/ /**
- * @brief:      scan key process
- *
- * @param[in]:  NONE
- *
- * @return:     NONE
- *********************************************************************/
+//---------------------------------------
+//Key function
+//Keys
+enum {
+    _NO_KEY_,
+    _KEY_1_,
+    _KEY_2_,
+    _MAX_KEY_,
+};
+
+//P17
+//#define _ALL_KEY_MASK_1_           0x08
+//#define _ALL_KEY_MASK_RETURN_1_    (~0x08)
+//#define _KEY_PORT_1_               P3
+
+//P35
+//#define _ALL_KEY_MASK_2_           0x20
+//#define _ALL_KEY_MASK_RETURN_2_    0xdf
+//#define _KEY_PORT_2_               P3
+
+//ALL key
+#define _ALL_KEY_MASK_ 0x08
+
+#define _HOLD_TIMER_KEY_ 4
+uint8_t HoldKeyCtr;
+
+FlagStatus F_Key;
+FlagStatus F_PushKey;
+FlagStatus F_NewKey;
+FlagStatus F_HoldKey;
+FlagStatus F_TwoKey;
+uint8_t Key;
+uint8_t OldKey;
+
 void ScanKey(void)
 {
     //uint8_t i,j;
@@ -96,14 +123,6 @@ normal_quit_scan_key:
     asm("nop");
 }
 
-/********************************************************************/ /**
- * @brief:          KEY HOLD COM Function subprogram
- *
- *
- * @param[in]:      NONE
- *
- * @return:         NONE
- *********************************************************************/
 FlagStatus HoldKeyCom(void)
 {
     if (F_NewKey == SET) {
@@ -120,15 +139,7 @@ FlagStatus HoldKeyCom(void)
     return RESET;
 }
 
-/********************************************************************/ /**
- * @brief:          push key Function subprogram
- *
- *
- * @param[in]:      NONE
- *
- * @return:         NONE
- *********************************************************************/
-void PushKeyFunc(void)
+static void PushKeyFunc(void)
 {
     switch (Key) {
         case _KEY_1_:
@@ -155,14 +166,7 @@ void PushKeyFunc(void)
     F_NewKey = RESET;
 }
 
-/********************************************************************/ /**
- * @brief:          rele key Function subprogram
- *
- * @param[in]:  NONE
- *
- * @return:         NONE
- *********************************************************************/
-void ReleKeyFunc(void)
+static void ReleKeyFunc(void)
 {
     uint8_t tmp;
 
@@ -193,4 +197,74 @@ void ReleKeyFunc(void)
     }
 
     OldKey = 0x00;
+}
+
+void KEY_Process(void)
+{
+    if (F_PushKey) {
+        if ((Key < _MAX_KEY_) && (Key != _NO_KEY_)) {
+            PushKeyFunc();
+        }
+    } else {
+        if ((OldKey < _MAX_KEY_) && (OldKey != _NO_KEY_)) {
+            ReleKeyFunc();
+        }
+    }
+}
+
+void TempHeatControl(int16_t Temp)
+{
+    if (F_PushKey == SET) {
+        if (Temp < 1200) {
+            HeatSpeed = 0;
+        } else if (Temp < 1300) {
+            HeatSpeed = 0;
+        } else if (Temp < 1400) {
+            HeatSpeed = 0;
+        }
+
+        if (Temp > 1000) {
+            F_WaterPumpOn = SET;
+        } else {
+            F_WaterPumpOn = RESET;
+        }
+
+        if (F_Heat == SET) {
+            if (Temp > 1500) {
+                F_Heat = RESET;
+            }
+        } else {
+            //if (F_PushKey == SET) {
+            if (F_Heat == RESET) {
+                if (Temp < 1400) {
+                    F_Heat = SET;
+                }
+            }
+            //}
+        }
+    } else {
+        if (Temp < 1000) {
+            HeatSpeed = 0;
+        } else if (Temp < 1100) {
+            HeatSpeed = 2;
+        } else if (Temp < 1200) {
+            HeatSpeed = 4;
+        } else {
+            HeatSpeed = 4;
+        }
+
+        if (F_Heat == SET) {
+            if (Temp > 1200) {
+                F_Heat = RESET;
+            }
+        } else {
+            //if (F_PushKey == SET) {
+            if (F_Heat == RESET) {
+                if (Temp < 1100) {
+                    F_Heat = SET;
+                }
+            }
+            //}
+        }
+    }
 }

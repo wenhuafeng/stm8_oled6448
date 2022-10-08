@@ -43,17 +43,4 @@ void Date_Deal();
 uint8_t Date_Day(uint16_t Year, uint8_t Month);
 void Week_Deal(uint16_t Year, uint8_t Month, uint8_t Day);
 
-#if 0
-void MIN_INC (void);
-void MIN_DEC (void);
-void HOUR_INC (void);
-void HOUR_DEC (void);
-void DAY_INC (void);
-void DAY_DEC (void);
-void MONTH_INC (void);
-void MONTH_DEC (void);
-void YEAR_INC (void);
-void YEAR_DEC (void);
-#endif
-
 #endif

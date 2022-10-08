@@ -5,6 +5,50 @@
 
 #if (_OLED_6448_)
 
+#define Write 0
+#define Read  1
+
+#define HIGH 1
+#define LOW  0
+
+enum {
+    _ACK_,
+    _NACK_,
+};
+
+enum {
+    _LCD_SDA_INPUT_,
+    _LCD_SDA_OUTPUT_,
+};
+#define LCD_SCL_1      OLED_SCL_PIN
+#define LCD_SDA_1      OLED_SDA_PIN
+#define LCD_SCL_1_PORT OLED_SCL_PORT
+#define LCD_SDA_1_PORT OLED_SDA_PORT
+#define LCD_SDAIN_1()                                                \
+    do {                                                             \
+        GPIO_Init(LCD_SDA_1_PORT, LCD_SDA_1, GPIO_Mode_In_FL_No_IT); \
+    } while (0)
+#define LCD_SDAOUT_1()                                                   \
+    do {                                                                 \
+        GPIO_Init(LCD_SDA_1_PORT, LCD_SDA_1, GPIO_Mode_Out_PP_Low_Fast); \
+    } while (0)
+#define LCD_SCL_1_HIGH()                         \
+    do {                                         \
+        GPIO_SetBits(LCD_SCL_1_PORT, LCD_SCL_1); \
+    } while (0)
+#define LCD_SCL_1_LOW()                            \
+    do {                                           \
+        GPIO_ResetBits(LCD_SCL_1_PORT, LCD_SCL_1); \
+    } while (0)
+#define LCD_SDA_1_HIGH()                         \
+    do {                                         \
+        GPIO_SetBits(LCD_SDA_1_PORT, LCD_SDA_1); \
+    } while (0)
+#define LCD_SDA_1_LOW()                            \
+    do {                                           \
+        GPIO_ResetBits(LCD_SDA_1_PORT, LCD_SDA_1); \
+    } while (0)
+
 //
 // IC = SSD1306
 // IIC
@@ -188,6 +232,8 @@ uint8_t I2C_SendByte(uint8_t Byte)
     return F_temp;
 }
 
+uint8_t Tbl[24];
+
 void OLED_WriteCmd(uint8_t Cmd)
 {
     I2C_Start();
@@ -277,42 +323,7 @@ void OLED_Init(void)
     OLED_SetXY(0, 0);
 }
 
-//==============================================================================
-//==============================================================================
-/*
-void LCD_P8x16Str(uint8_t *Tbl)
-{
-  uint8_t c,i,j;
-  uint8_t x,y,z;
-
-  x = 128/4;
-  y = 2;
-  j = 0x00;
-  do
-  {
-    c = Tbl[j]-32;
-    OLED_SetXY(x,y);
-    for(i=0;i<8;i++) {
-      z = F8X16[c*16+i];
-      OLED_WriteData(z);
-    }
-    OLED_SetXY(x,y+1);
-    for(i=8;i<16;i++) {
-      z = F8X16[c*16+i];
-      OLED_WriteData(z);
-    }
-    x+=8;
-    if (x == 0x60) {
-      x = 128/4;
-      y = y+2;
-    }
-    j++;
-  } while (j < 24);
-}*/
-
-//==============================================================================
-//==============================================================================
-void LCD_P8x16Str(uint8_t *Tbl)
+void LCD_P8x16Str(void)
 {
     uint8_t c, i, z;
     static uint8_t x      = 128 / 4;
@@ -345,8 +356,6 @@ void LCD_P8x16Str(uint8_t *Tbl)
     }
 }
 
-//==============================================================================
-//==============================================================================
 uint8_t HexToAsc(uint8_t aHex)
 {
     if (aHex <= 9) {
@@ -359,10 +368,6 @@ uint8_t HexToAsc(uint8_t aHex)
 
     return aHex;
 }
-
-//==============================================================================
-//==============================================================================
-//uint8_t Tbl[24];
 
 void OledDisp(void)
 {
@@ -402,9 +407,10 @@ void OledDisp(void)
     Tbl[21] = ':';
     Tbl[22] = HexToAsc(TIME.sec / 10);
     Tbl[23] = HexToAsc(TIME.sec % 10);
-
-    //LCD_P8x16Str(Tbl);
-    TblCtr = 0x00;
 }
+
+#else
+
+void LCD_P8x16Str(void) {}
 
 #endif

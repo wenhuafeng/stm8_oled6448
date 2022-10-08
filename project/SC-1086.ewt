@@ -2098,45 +2098,6 @@
         </settings>
     </configuration>
     <group>
-        <name>user</name>
-        <file>
-            <name>$PROJ_DIR$\..\user\adc_func.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\gp_sub.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\initialization.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\key_process.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\led_func.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\main.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\ntc.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\oled_6448.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\rtc.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\stm8l15x_it.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\th_test.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\user\uart.c</name>
-        </file>
-    </group>
-    <group>
         <name>STM8L_StdPeriph_Lib</name>
         <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_adc.c</name>
@@ -2221,6 +2182,39 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_wwdg.c</name>
+        </file>
+    </group>
+    <group>
+        <name>user</name>
+        <file>
+            <name>$PROJ_DIR$\..\user\adc_func.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\gp_sub.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\initialization.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\key_process.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\main.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\oled_6448.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\rtc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\stm8l15x_it.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\th_test.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\user\uart.c</name>
         </file>
     </group>
 </project>

@@ -1,11 +1,3 @@
-//******************************************************************************
-//* @file    Initialization.c
-//* @author  wenhuafeng
-//* @version V100
-//* @date    2018/10/10
-//* @brief   Init program body
-//******************************************************************************
-
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
 #include "common.h"
@@ -25,7 +17,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 //uint16_t Buffer[BUFFER_SIZE];
-union ADC_BUF ADC_BUFFER;
+//union ADC_BUF ADC_BUFFER;
 
 /*
 void PortLowPower(void)

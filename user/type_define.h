@@ -1,15 +1,6 @@
 #ifndef TYPE_DEFINE_H
 #define TYPE_DEFINE_H
 
-//typedef bool BOOLEAN;
-//typedef unsigned char uint8_t;       /* Unsigned  8 bit quantity        */
-//typedef signed char int8_t;          /* Signed    8 bit quantity        */
-//typedef unsigned short int uint16_t; /* Unsigned 16 bit quantity        */
-//typedef signed short int int16_t;    /* Signed   16 bit quantity        */
-//typedef unsigned int uint32_t;       /* Unsigned 32 bit quantity        */
-//typedef signed int int32_t;          /* Signed   32 bit quantity        */
-typedef float FP32;                  /* Single precision floating point */
-
 #define code const
 
 #ifndef NULL
@@ -19,6 +10,7 @@ typedef float FP32;                  /* Single precision floating point */
 #define BIG_ENDIAN 1
 
 #if BIG_ENDIAN
+
 typedef union {
     uint16_t W;
     struct {
@@ -39,7 +31,9 @@ typedef union {
         uint8_t L;
     } B;
 } DWt;
+
 #else
+
 typedef union {
     uint16_t W;
     struct {
@@ -60,6 +54,7 @@ typedef union {
         uint8_t M;
     } B;
 } DWt;
+
 #endif
 
 #define LOWBYTE(X)  ((uint8_t)((X)&0xff))    //E!�gII?
