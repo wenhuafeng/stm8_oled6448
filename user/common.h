@@ -1,27 +1,24 @@
-
-
 #ifndef COMMON_H
 #define COMMON_H
 
 /*----------------------------------------------------------------------------*/
 //Data Type const
-#ifdef  OS_GLOBALS
-#define OS_EXT  extern
+#ifdef OS_GLOBALS
+#define OS_EXT extern
 #else
 #define OS_EXT
 #endif
 
-#define _AC_DC_PUMP_            1
-#define _DELAY_3S_VENT_         1
-#define _TH_                    1
-#define _NTC_                   0
-#define _OLED_6448_             1
-#define _SOFTWARE_RTC_          1
+#define _AC_DC_PUMP_    1
+#define _DELAY_3S_VENT_ 1
+#define _TH_            1
+#define _NTC_           0
+#define _OLED_6448_     1
+#define _SOFTWARE_RTC_  1
 
-#define _UART_FUNC_             0
-#define _SYS_PRINTF_FUNC_       0
-#define _MY_PRINTF_FUNC_        0
-
+#define _UART_FUNC_       0
+#define _SYS_PRINTF_FUNC_ 0
+#define _MY_PRINTF_FUNC_  0
 
 /* Includes system -----------------------------------------------------------*/
 #include <math.h>
@@ -71,4 +68,3 @@
 #endif
 
 #endif
-

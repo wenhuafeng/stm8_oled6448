@@ -1,34 +1,32 @@
-
 #ifndef _LED_CONTROL_H_
 #define _LED_CONTROL_H_
 
+#define LED_PWM_GEAR_LOW  LED1
+#define LED_PWM_GEAR_MID  LED2
+#define LED_PWM_GEAR_HIGH LED3
 
-#define LED_PWM_GEAR_LOW   LED1
-#define LED_PWM_GEAR_MID   LED2
-#define LED_PWM_GEAR_HIGH  LED3
-
-#define LED_BAT_IND_LOW    LED6
-#define LED_BAT_IND_MID    LED4
-#define LED_BAT_IND_HIGH   LED5
+#define LED_BAT_IND_LOW  LED6
+#define LED_BAT_IND_MID  LED4
+#define LED_BAT_IND_HIGH LED5
 
 //-----------------------------------------------------------
 
 enum {
-  _LED_BI_OFF_,
-  _LED_CHARGE_,         //Battery charge indicator
-  _LED_FLASH_,          //Alarm wanning
-  _LED_BAT_IND_THREE_,  //Battery indicator three
-  _LED_BAT_IND_TWO_,    //Battery indicator two
-  _LED_BAT_IND_ONE_,    //Battery indicator one
-  _LED_BAT_IND_EMPTY_,  //Battery indicator empty
+    _LED_BI_OFF_,
+    _LED_CHARGE_,        //Battery charge indicator
+    _LED_FLASH_,         //Alarm wanning
+    _LED_BAT_IND_THREE_, //Battery indicator three
+    _LED_BAT_IND_TWO_,   //Battery indicator two
+    _LED_BAT_IND_ONE_,   //Battery indicator one
+    _LED_BAT_IND_EMPTY_, //Battery indicator empty
 };
 OS_EXT u8 LED_ChargeStatic;
 
 enum {
-  _LED_PWM_OFF_,
-  _LED_LOW_,
-  _LED_MID_,
-  _LED_HIGH_,
+    _LED_PWM_OFF_,
+    _LED_LOW_,
+    _LED_MID_,
+    _LED_HIGH_,
 };
 OS_EXT u8 LED_PwmGear;
 
@@ -40,15 +38,15 @@ OS_EXT u8 LED_PwmGear;
 //};
 
 enum {
-  _WORK_ERROR_,
-  _WORK_OFF_,
-  _WORK_LOW_,
-  _WORK_MID_,
-  _WORK_HIGH_,
+    _WORK_ERROR_,
+    _WORK_OFF_,
+    _WORK_LOW_,
+    _WORK_MID_,
+    _WORK_HIGH_,
 };
 //OS_EXT u8 Switch;
 
-#define _LED_BAT_IND_TIME_               (10*2+1)
+#define _LED_BAT_IND_TIME_ (10 * 2 + 1)
 OS_EXT u8 LED_BatteryIndicatorCtr;
 
 //-----------------------------------------------------------

@@ -27,8 +27,8 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#ifndef  OS_MASTER_FILE
-#define  OS_GLOBALS
+#ifndef OS_MASTER_FILE
+#define OS_GLOBALS
 #include "common.h"
 #endif
 
@@ -61,7 +61,7 @@ extern __IO FunctionalState AllowedRefresh;
   */
 INTERRUPT_HANDLER(NonHandledInterrupt, 0)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -74,7 +74,7 @@ INTERRUPT_HANDLER(NonHandledInterrupt, 0)
   */
 INTERRUPT_HANDLER_TRAP(TRAP_IRQHandler)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -86,7 +86,7 @@ INTERRUPT_HANDLER_TRAP(TRAP_IRQHandler)
   */
 INTERRUPT_HANDLER(FLASH_IRQHandler, 1)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -98,15 +98,14 @@ INTERRUPT_HANDLER(FLASH_IRQHandler, 1)
   */
 INTERRUPT_HANDLER(DMA1_CHANNEL0_1_IRQHandler, 2)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-  if (DMA_GetITStatus(DMA1_IT_TC0)) {
-    F_ADC1_ConversionComplete = SET;
-    /* Clear IT Pending Bit */
-    DMA_ClearITPendingBit(DMA1_IT_TC0);
-  }
-
+    if (DMA_GetITStatus(DMA1_IT_TC0)) {
+        F_ADC1_ConversionComplete = SET;
+        /* Clear IT Pending Bit */
+        DMA_ClearITPendingBit(DMA1_IT_TC0);
+    }
 }
 
 /**
@@ -116,7 +115,7 @@ INTERRUPT_HANDLER(DMA1_CHANNEL0_1_IRQHandler, 2)
   */
 INTERRUPT_HANDLER(DMA1_CHANNEL2_3_IRQHandler, 3)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -128,24 +127,23 @@ INTERRUPT_HANDLER(DMA1_CHANNEL2_3_IRQHandler, 3)
   */
 INTERRUPT_HANDLER(RTC_CSSLSE_IRQHandler, 4)
 {
-  static u8 i;
+    static u8 i;
 
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-  //RTC_WakeUpCmd(DISABLE);
+    //RTC_WakeUpCmd(DISABLE);
 
-  F_500MS = SET;
-  F_500MS_1 = SET;
-  F_500MS_LED = SET;
-  //F_SET_COL = ~F_SET_COL;
+    F_500MS     = SET;
+    F_500MS_1   = SET;
+    F_500MS_LED = SET;
+    //F_SET_COL = ~F_SET_COL;
 
-  if (++i & 0x01) {
-    F_1S = SET;
+    if (++i & 0x01) {
+        F_1S = SET;
+    }
 
-  }
-
-  RTC_ClearITPendingBit(RTC_IT_WUT);
+    RTC_ClearITPendingBit(RTC_IT_WUT);
 }
 
 /**
@@ -155,7 +153,7 @@ INTERRUPT_HANDLER(RTC_CSSLSE_IRQHandler, 4)
   */
 INTERRUPT_HANDLER(EXTIE_F_PVD_IRQHandler, 5)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -167,7 +165,7 @@ INTERRUPT_HANDLER(EXTIE_F_PVD_IRQHandler, 5)
   */
 INTERRUPT_HANDLER(EXTIB_G_IRQHandler, 6)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -179,7 +177,7 @@ INTERRUPT_HANDLER(EXTIB_G_IRQHandler, 6)
   */
 INTERRUPT_HANDLER(EXTID_H_IRQHandler, 7)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -191,7 +189,7 @@ INTERRUPT_HANDLER(EXTID_H_IRQHandler, 7)
   */
 INTERRUPT_HANDLER(EXTI0_IRQHandler, 8)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -203,27 +201,27 @@ INTERRUPT_HANDLER(EXTI0_IRQHandler, 8)
   */
 INTERRUPT_HANDLER(EXTI1_IRQHandler, 9)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 #ifdef USE_STM8L1526_EVAL
-  /* Turn off LED2 */
-  STM_EVAL_LEDOff(LED2);
-  /* Disable refreshing WWDG in allowed window */
-  AllowedRefresh = DISABLE;
+    /* Turn off LED2 */
+    STM_EVAL_LEDOff(LED2);
+    /* Disable refreshing WWDG in allowed window */
+    AllowedRefresh = DISABLE;
 
-  /* clear Interrupt pending bit */
-  EXTI_ClearITPendingBit(EXTI_IT_Pin1);
+    /* clear Interrupt pending bit */
+    EXTI_ClearITPendingBit(EXTI_IT_Pin1);
 
 #elif defined USE_STM8L1528_EVAL
 
-  /* Turn off LED2 */
-  STM_EVAL_LEDOff(LED2);
-  /* Enable refreshing WWDG in non allowed window */
-  NonAlowedRefresh = ENABLE;
+    /* Turn off LED2 */
+    STM_EVAL_LEDOff(LED2);
+    /* Enable refreshing WWDG in non allowed window */
+    NonAlowedRefresh = ENABLE;
 
-  /* clear Interrupt pending bit */
-  EXTI_ClearITPendingBit(EXTI_IT_Pin1);
+    /* clear Interrupt pending bit */
+    EXTI_ClearITPendingBit(EXTI_IT_Pin1);
 #endif /* USE_STM8L152X_EVAL */
 }
 
@@ -234,11 +232,11 @@ INTERRUPT_HANDLER(EXTI1_IRQHandler, 9)
   */
 INTERRUPT_HANDLER(EXTI2_IRQHandler, 10)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 
-  EXTI_ClearITPendingBit(EXTI_IT_Pin2);
+    EXTI_ClearITPendingBit(EXTI_IT_Pin2);
 }
 
 /**
@@ -248,7 +246,7 @@ INTERRUPT_HANDLER(EXTI2_IRQHandler, 10)
   */
 INTERRUPT_HANDLER(EXTI3_IRQHandler, 11)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -260,17 +258,17 @@ INTERRUPT_HANDLER(EXTI3_IRQHandler, 11)
   */
 INTERRUPT_HANDLER(EXTI4_IRQHandler, 12)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 #ifdef USE_STM8L1526_EVAL
-  /* Turn off LED2 */
-  STM_EVAL_LEDOff(LED2);
-  /* Enable refreshing WWDG in non allowed window */
-  NonAlowedRefresh = ENABLE;
+    /* Turn off LED2 */
+    STM_EVAL_LEDOff(LED2);
+    /* Enable refreshing WWDG in non allowed window */
+    NonAlowedRefresh = ENABLE;
 
-  /* clear Interrupt pending bit */
-  EXTI_ClearITPendingBit(EXTI_IT_Pin4);
+    /* clear Interrupt pending bit */
+    EXTI_ClearITPendingBit(EXTI_IT_Pin4);
 #endif /* USE_STM8L1526_EVAL */
 }
 
@@ -281,7 +279,7 @@ INTERRUPT_HANDLER(EXTI4_IRQHandler, 12)
   */
 INTERRUPT_HANDLER(EXTI5_IRQHandler, 13)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -293,35 +291,35 @@ INTERRUPT_HANDLER(EXTI5_IRQHandler, 13)
   */
 INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-  static u8 PumpCtr;
-  static u8 HeatSpeedCtr;
-  u16 tmp;
+    static u8 PumpCtr;
+    static u8 HeatSpeedCtr;
+    u16 tmp;
 
-  if (F_AC_DC_PUMP) {
-    //#if (_AC_DC_PUMP_ == _AC_PUMP_)
-      if (GPIO_ReadInputDataBit(OVER_ZERO_PORT, OVER_ZERO_PIN)) {
-        //if (F_Protection == 0) {
-          //if (F_15S) {
+    if (F_AC_DC_PUMP) {
+        //#if (_AC_DC_PUMP_ == _AC_PUMP_)
+        if (GPIO_ReadInputDataBit(OVER_ZERO_PORT, OVER_ZERO_PIN)) {
+            //if (F_Protection == 0) {
+            //if (F_15S) {
             if (!F_Pump) {
-              PumpCtr++;
-              if (PumpCtr > PumpSpeed) {
-                if (F_WaterPumpOn) {
-                  PUMP_PIN_HIGH();
-                  F_Pump = SET;
+                PumpCtr++;
+                if (PumpCtr > PumpSpeed) {
+                    if (F_WaterPumpOn) {
+                        PUMP_PIN_HIGH();
+                        F_Pump = SET;
+                    }
                 }
-              }
             } else {
-              PUMP_PIN_LOW();
-              F_Pump = RESET;
-              PumpCtr = 0x00;
+                PUMP_PIN_LOW();
+                F_Pump  = RESET;
+                PumpCtr = 0x00;
             }
-          //}
-        //}
-      }
-    /*
+            //}
+            //}
+        }
+        /*
     #else
       //if (F_15S) {
         PumpCtr++;
@@ -335,32 +333,32 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
       //}
     #endif
     */
-  }
-
-  if (F_Heat) {
-    HeatSpeedCtr++;
-    if (HeatSpeedCtr > HeatSpeed) {
-      HeatSpeedCtr = 0x00;
-      HEAT_PIN_HIGH();
     }
-  }
-  if (F_Vent) {
-    VENT_PIN_HIGH();
-  }
 
-  for (tmp=0; tmp<300; tmp++) {
-    asm("nop");
-    asm("nop");
-  }
-  //ThyristorCtr = 200;
+    if (F_Heat) {
+        HeatSpeedCtr++;
+        if (HeatSpeedCtr > HeatSpeed) {
+            HeatSpeedCtr = 0x00;
+            HEAT_PIN_HIGH();
+        }
+    }
+    if (F_Vent) {
+        VENT_PIN_HIGH();
+    }
 
-  #if (!_AC_DC_PUMP_)
-  PUMP_PIN_LOW();
-  #endif
-  HEAT_PIN_LOW();
+    for (tmp = 0; tmp < 300; tmp++) {
+        asm("nop");
+        asm("nop");
+    }
+    //ThyristorCtr = 200;
 
-  //RUN_LED_TOGGLE();//TEST
-  EXTI_ClearITPendingBit(EXTI_IT_Pin6);
+#if (!_AC_DC_PUMP_)
+    PUMP_PIN_LOW();
+#endif
+    HEAT_PIN_LOW();
+
+    //RUN_LED_TOGGLE();//TEST
+    EXTI_ClearITPendingBit(EXTI_IT_Pin6);
 }
 
 /**
@@ -370,15 +368,14 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler, 14)
   */
 INTERRUPT_HANDLER(EXTI7_IRQHandler, 15)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-  if (EXTI_GetITStatus(EXTI_IT_Pin7)) {
-    FlowMeterCtr++;
+    if (EXTI_GetITStatus(EXTI_IT_Pin7)) {
+        FlowMeterCtr++;
 
-    EXTI_ClearITPendingBit(EXTI_IT_Pin7);
-  }
-
+        EXTI_ClearITPendingBit(EXTI_IT_Pin7);
+    }
 }
 
 /**
@@ -388,7 +385,7 @@ INTERRUPT_HANDLER(EXTI7_IRQHandler, 15)
   */
 INTERRUPT_HANDLER(LCD_AES_IRQHandler, 16)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -400,7 +397,7 @@ INTERRUPT_HANDLER(LCD_AES_IRQHandler, 16)
   */
 INTERRUPT_HANDLER(SWITCH_CSS_BREAK_DAC_IRQHandler, 17)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -412,7 +409,7 @@ INTERRUPT_HANDLER(SWITCH_CSS_BREAK_DAC_IRQHandler, 17)
   */
 INTERRUPT_HANDLER(ADC1_COMP_IRQHandler, 18)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -424,7 +421,7 @@ INTERRUPT_HANDLER(ADC1_COMP_IRQHandler, 18)
   */
 INTERRUPT_HANDLER(TIM2_UPD_OVF_TRG_BRK_USART2_TX_IRQHandler, 19)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -436,7 +433,7 @@ INTERRUPT_HANDLER(TIM2_UPD_OVF_TRG_BRK_USART2_TX_IRQHandler, 19)
   */
 INTERRUPT_HANDLER(TIM2_CC_USART2_RX_IRQHandler, 20)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -448,23 +445,23 @@ INTERRUPT_HANDLER(TIM2_CC_USART2_RX_IRQHandler, 20)
   */
 INTERRUPT_HANDLER(TIM3_UPD_OVF_TRG_BRK_USART3_TX_IRQHandler, 21)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
-  //static u8 i;
-  static u8 Ctr;
-  static u8 Ctr1;
-  static u8 Ctr2;
+    //static u8 i;
+    static u8 Ctr;
+    static u8 Ctr1;
+    static u8 Ctr2;
 
-  if (TIM3_GetITStatus(TIM3_IT_Update) == SET) {
-    TIM3_ClearITPendingBit(TIM3_IT_Update);
+    if (TIM3_GetITStatus(TIM3_IT_Update) == SET) {
+        TIM3_ClearITPendingBit(TIM3_IT_Update);
 
-    F_10MS = SET;
-    Ctr++;
-    if (Ctr > 50) {
-      Ctr = 0x00;
-      //HoldKeyCtr++;
-      /*
+        F_10MS = SET;
+        Ctr++;
+        if (Ctr > 50) {
+            Ctr = 0x00;
+            //HoldKeyCtr++;
+            /*
       F_500MS = SET;
       F_500MS_1 = SET;
       F_500MS_LED = SET;
@@ -472,24 +469,24 @@ INTERRUPT_HANDLER(TIM3_UPD_OVF_TRG_BRK_USART3_TX_IRQHandler, 21)
         F_1SEC = SET;
       }
       */
-    }
-    Ctr1++;
-    if (Ctr1 > 10) {
-      Ctr1 = 0x00;
-      F_100MS = SET;
-    }
-    Ctr2++;
-    if (Ctr2 > 20) {
-      Ctr2 = 0x00;
-      F_200MS = SET;
-    }
+        }
+        Ctr1++;
+        if (Ctr1 > 10) {
+            Ctr1    = 0x00;
+            F_100MS = SET;
+        }
+        Ctr2++;
+        if (Ctr2 > 20) {
+            Ctr2    = 0x00;
+            F_200MS = SET;
+        }
 
-    //CtrFunc();
-    //LED1_TOGGLE();//TEST
-  }
-//  else if (USART_GetITStatus(USART1, USART_IT_TC) == SET) {
-//    USART_ClearITPendingBit(USART1, USART_IT_TC);
-//  }
+        //CtrFunc();
+        //LED1_TOGGLE();//TEST
+    }
+    //  else if (USART_GetITStatus(USART1, USART_IT_TC) == SET) {
+    //    USART_ClearITPendingBit(USART1, USART_IT_TC);
+    //  }
 }
 
 /**
@@ -499,7 +496,7 @@ INTERRUPT_HANDLER(TIM3_UPD_OVF_TRG_BRK_USART3_TX_IRQHandler, 21)
   */
 INTERRUPT_HANDLER(TIM3_CC_USART3_RX_IRQHandler, 22)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -511,7 +508,7 @@ INTERRUPT_HANDLER(TIM3_CC_USART3_RX_IRQHandler, 22)
   */
 INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_COM_IRQHandler, 23)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -523,7 +520,7 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_COM_IRQHandler, 23)
   */
 INTERRUPT_HANDLER(TIM1_CC_IRQHandler, 24)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -535,7 +532,7 @@ INTERRUPT_HANDLER(TIM1_CC_IRQHandler, 24)
   */
 INTERRUPT_HANDLER(TIM4_UPD_OVF_TRG_IRQHandler, 25)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -547,7 +544,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_TRG_IRQHandler, 25)
   */
 INTERRUPT_HANDLER(SPI1_IRQHandler, 26)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -559,7 +556,7 @@ INTERRUPT_HANDLER(SPI1_IRQHandler, 26)
   */
 INTERRUPT_HANDLER(USART1_TX_TIM5_UPD_OVF_TRG_BRK_IRQHandler, 27)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
@@ -571,30 +568,30 @@ INTERRUPT_HANDLER(USART1_TX_TIM5_UPD_OVF_TRG_BRK_IRQHandler, 27)
   */
 INTERRUPT_HANDLER(USART1_RX_TIM5_CC_IRQHandler, 28)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 
 #if (_UART_FUNC_)
-  u8 i;
+    u8 i;
 
-  if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET) {
-    USART_ClearITPendingBit(USART1, USART_IT_RXNE);
-    if (g_uart_rxbuf.len>=sizeof(g_uart_rxbuf.buf)) {
-       USART_ReceiveData8(USART1);
-       return;
-       //goto enable_rx_int;
+    if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET) {
+        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+        if (g_uart_rxbuf.len >= sizeof(g_uart_rxbuf.buf)) {
+            USART_ReceiveData8(USART1);
+            return;
+            //goto enable_rx_int;
+        }
+        i                                    = USART_ReceiveData8(USART1);
+        g_uart_rxbuf.buf[g_uart_rxbuf.len++] = i;
+        if (i == '5') {
+            uart_send("ABC", 3);
+        }
     }
-    i = USART_ReceiveData8(USART1);
-    g_uart_rxbuf.buf[g_uart_rxbuf.len++] = i;
-    if (i == '5') {
-      uart_send("ABC", 3);
-    }
-  }
 #endif
 
-//enable_rx_int:
-  //USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+    //enable_rx_int:
+    //USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 }
 
 /**
@@ -604,16 +601,7 @@ INTERRUPT_HANDLER(USART1_RX_TIM5_CC_IRQHandler, 28)
   */
 INTERRUPT_HANDLER(I2C1_SPI2_IRQHandler, 29)
 {
-  /* In order to detect unexpected events during development,
+    /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
 }
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

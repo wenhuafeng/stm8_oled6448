@@ -1,24 +1,16 @@
-/*
-
-    For "LP_RUN_MODE" and "LP_WAIT_MODE" need add MY_RAM_FUNC to
-    linker configuration file (icf). For details see IAR Technical Note 27498
-    URL: https://www.iar.com/search-results/#!?query=27498&tab=pages
-    
-*/
-
 #ifndef __STM8L_LOW_POWER_H
 #define __STM8L_LOW_POWER_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 #include "stm8l15x.h"
 
 //--- Defines
-#define LP_USE_LOW_POWER_RUN     (1)
-#define LP_USE_LSE                  (0)
-#define LP_USE_HSE                  (0)
+#define LP_USE_LOW_POWER_RUN (1)
+#define LP_USE_LSE           (0)
+#define LP_USE_HSE           (0)
 
 //--- Macroses
 
@@ -28,8 +20,8 @@ typedef enum {
     WAIT_INTERRUPT,
     WAIT_EVENT,
 #if (LP_USE_LOW_POWER_RUN == 1)
-    LP_RUN_MODE,    //Low power run mode
-    LP_WAIT_MODE,   //Low power wait mode
+    LP_RUN_MODE,  //Low power run mode
+    LP_WAIT_MODE, //Low power wait mode
 #endif
     ACTIVE_HALT,
     HALT
@@ -51,7 +43,7 @@ static void LowPowerRunInit(LowPowerModes_td mode);
 --- Public functions
 --------------------------------------------------------*/
 void LowPowerEnable(LowPowerModes_td mode);
-uint8_t LowPowerExit(void);//LowPowerModes_td mode);
+uint8_t LowPowerExit(void); //LowPowerModes_td mode);
 //void LowPower_RTCinit(LowPowerRTCclock_td clockType);
 //void LowPower_RTC
 
@@ -68,4 +60,4 @@ __weak void RunAfterExitLowPowerMode(LowPowerModes_td mode);
 }
 #endif
 
-#endif  //__STM8L_LOW_POWER_H
+#endif //__STM8L_LOW_POWER_H

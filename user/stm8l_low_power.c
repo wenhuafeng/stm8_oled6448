@@ -1,17 +1,10 @@
-
-/*
-
-*/
-
-
-#ifndef  OS_MASTER_FILE
-#define  OS_GLOBALS
+#ifndef OS_MASTER_FILE
+#define OS_GLOBALS
 #include "common.h"
 #endif
 
 //Private variables
 LowPowerModes_td currentMode = LP_RUN_MODE;
-
 
 /*--------------------------------------------------------
 --- Private functions
@@ -25,94 +18,96 @@ LowPowerModes_td currentMode = LP_RUN_MODE;
   */
 /* Begin Section LPRUN */
 #ifdef _COSMIC_
-#pragma section (LPRUN)
+#pragma section(LPRUN)
 void User_LPRAM(void)
 #endif
 #ifdef _RAISONANCE_
-void User_LPRAM(void) inram
+        void User_LPRAM(void) inram
 #endif
 #ifdef _IAR_
-__ramfunc void User_LPRAM(void)
+        __ramfunc void User_LPRAM(void)
 #endif
 {
-  /* User code begin */
-  u8 i = 0;
-  u8 Ctr = 0x00;
-  u8 AC_220V_IN_CTR = 0x00;
+    /* User code begin */
+    u8 i              = 0;
+    u8 Ctr            = 0x00;
+    u8 AC_220V_IN_CTR = 0x00;
 
-  /* To reduce consumption to minimal
+    /* To reduce consumption to minimal
   Swith off the Flash */
-  FLASH->CR1 = 0x08;
-  while(((CLK->REGCSR)&0x80)==0x80);
+    FLASH->CR1 = 0x08;
+    while (((CLK->REGCSR) & 0x80) == 0x80)
+        ;
 
-  /* Swith off the Regulator*/
-  CLK->REGCSR = 0x02;
-  while(((CLK->REGCSR)&0x01)==0x01);
+    /* Swith off the Regulator*/
+    CLK->REGCSR = 0x02;
+    while (((CLK->REGCSR) & 0x01) == 0x01)
+        ;
 
-  /* Set trigger on GPIOE pin6*/
-  WFE->CR2 = 0x04;
-  //GPIOE->CR2 = 0x44;
+    /* Set trigger on GPIOE pin6*/
+    WFE->CR2 = 0x04;
+    //GPIOE->CR2 = 0x44;
 
-  for (i=0; i<100; i++);
-  asm("nop");
+    for (i = 0; i < 100; i++)
+        ;
+    asm("nop");
 
-  /* To start counter on falling edge*/
-  //GPIO_LOW(CTN_GPIO_PORT,CTN_CNTEN_GPIO_PIN);
+    /* To start counter on falling edge*/
+    //GPIO_LOW(CTN_GPIO_PORT,CTN_CNTEN_GPIO_PIN);
 
-  /*Wait for end of counter */
-  //wfe();
+    /*Wait for end of counter */
+    //wfe();
 
-  do
-  {
-    do
-    {
-      ITStatus itstatus = RESET;
-      uint8_t enablestatus = 0, tmpreg = 0;
+    do {
+        do {
+            ITStatus itstatus    = RESET;
+            uint8_t enablestatus = 0, tmpreg = 0;
 
-      /* Get the Interrupt enable Status */
-      enablestatus = (uint8_t)(RTC->CR2 & (uint16_t)RTC_IT_WUT);
-      /* Get the Interrupt pending bit */
-      tmpreg = (uint8_t)(RTC->ISR2 & (uint8_t)((uint16_t)RTC_IT_WUT >> 4));
-      /* Get the status of the Interrupt */
-      if ((enablestatus != (uint8_t)RESET) && (tmpreg != (uint8_t)RESET)) {
-        itstatus = SET;
-      } else {
-        itstatus = RESET;
-      }
+            /* Get the Interrupt enable Status */
+            enablestatus = (uint8_t)(RTC->CR2 & (uint16_t)RTC_IT_WUT);
+            /* Get the Interrupt pending bit */
+            tmpreg = (uint8_t)(RTC->ISR2 & (uint8_t)((uint16_t)RTC_IT_WUT >> 4));
+            /* Get the status of the Interrupt */
+            if ((enablestatus != (uint8_t)RESET) && (tmpreg != (uint8_t)RESET)) {
+                itstatus = SET;
+            } else {
+                itstatus = RESET;
+            }
 
-      if (itstatus == SET) {
-        /* Clear the Flags in the RTC_ISR registers */
-        RTC->ISR2 = (uint8_t)~((uint8_t)RTC_FLAG_WUTF) ;
-        RTC->ISR1 = (uint8_t)(((uint8_t)~(uint8_t)((uint16_t)RTC_FLAG_WUTF >> (uint8_t)8)) & ((uint8_t)~(uint8_t)(RTC_ISR1_INIT)));
-        Ctr++;
-        if (Ctr & 0x01) {
-          //G_T_LED_PORT->ODR ^= G_T_LED_PIN;
-          SecCtr++;
-        }
-      }
+            if (itstatus == SET) {
+                /* Clear the Flags in the RTC_ISR registers */
+                RTC->ISR2 = (uint8_t) ~((uint8_t)RTC_FLAG_WUTF);
+                RTC->ISR1 = (uint8_t)(((uint8_t) ~(uint8_t)((uint16_t)RTC_FLAG_WUTF >> (uint8_t)8)) &
+                                      ((uint8_t) ~(uint8_t)(RTC_ISR1_INIT)));
+                Ctr++;
+                if (Ctr & 0x01) {
+                    //G_T_LED_PORT->ODR ^= G_T_LED_PIN;
+                    SecCtr++;
+                }
+            }
 
-    } while (!(V220_DETECT_PORT->IDR & (uint8_t)V220_DETECT_PIN));
-    AC_220V_IN_CTR++;
-  } while (AC_220V_IN_CTR < 100);
-  F_220V_OUT = 0x00;
-  F_220V_IN = 0x01;
+        } while (!(V220_DETECT_PORT->IDR & (uint8_t)V220_DETECT_PIN));
+        AC_220V_IN_CTR++;
+    } while (AC_220V_IN_CTR < 100);
+    F_220V_OUT = 0x00;
+    F_220V_IN  = 0x01;
 
-  //EXTI->SR1 |= 0x40;
-  WFE->CR2 = 0x00;
+    //EXTI->SR1 |= 0x40;
+    WFE->CR2 = 0x00;
 
-  //Switch on the regulator
-  CLK->REGCSR = 0x00;
-  while(((CLK->REGCSR)&0x1) != 0x1);
+    //Switch on the regulator
+    CLK->REGCSR = 0x00;
+    while (((CLK->REGCSR) & 0x1) != 0x1)
+        ;
 
-  asm("nop");
+    asm("nop");
 
-  /* User code end */
+    /* User code end */
 }
 /* End Section LPRUN */
 #ifdef _COSMIC_
-#pragma section ()
+#pragma section()
 #endif
-
 
 /**
   * @brief  Low power wait mode
@@ -122,14 +117,14 @@ __ramfunc void User_LPRAM(void)
   */
 /* Begin Section LPRUN */
 #ifdef _COSMIC_
-#pragma section (LPRUN)
+#pragma section(LPRUN)
 void LPRAM_WaitMode(void)
 #endif
 #ifdef _RAISONANCE_
-void LPRAM_WaitMode(void) inram
+        void LPRAM_WaitMode(void) inram
 #endif
 #ifdef _IAR_
-__ramfunc void LPRAM_WaitMode(void)
+        __ramfunc void LPRAM_WaitMode(void)
 #endif
 {
     nop();
@@ -140,9 +135,8 @@ __ramfunc void LPRAM_WaitMode(void)
 }
 /* End Section LPRUN */
 #ifdef _COSMIC_
-#pragma section ()
+#pragma section()
 #endif
-
 
 /**
   * @brief  Init low power run mode
@@ -160,12 +154,14 @@ static void LowPowerRunInit(LowPowerModes_td mode)
     //CLK_SYSCLKDivConfig(CLK_SYSCLKDiv_1);
     CLK_SYSCLKSourceConfig(CLK_SYSCLKSource_LSE);
     CLK_SYSCLKSourceSwitchCmd(ENABLE);
-    while (((CLK->SWCR)& 0x01)==0x01);
+    while (((CLK->SWCR) & 0x01) == 0x01)
+        ;
 #else
     CLK_SYSCLKDivConfig(CLK_SYSCLKDiv_1);
     CLK_SYSCLKSourceConfig(CLK_SYSCLKSource_LSI);
     CLK_SYSCLKSourceSwitchCmd(ENABLE);
-    while (((CLK->SWCR)& 0x01)==0x01);
+    while (((CLK->SWCR) & 0x01) == 0x01)
+        ;
 #endif
 
 #if (LP_USE_HSE == 1)
@@ -177,16 +173,17 @@ static void LowPowerRunInit(LowPowerModes_td mode)
     if (LP_RUN_MODE == mode) {
 /* To copy function LPR_Ram in RAM section LPRUN*/
 #ifdef _COSMIC_
-  if (!(_fctcpy('L')))
-    while(1);
+        if (!(_fctcpy('L')))
+            while (1)
+                ;
 #endif
         User_LPRAM();
-    }
-    else {
+    } else {
 /* To copy function LPR_Ram in RAM section LPRUN*/
 #ifdef _COSMIC_
-  if (!(_fctcpy('L')))
-    while(1);
+        if (!(_fctcpy('L')))
+            while (1)
+                ;
 #endif
         LPRAM_WaitMode();
     }
@@ -197,19 +194,22 @@ static void LowPowerRunInit(LowPowerModes_td mode)
 #if (LP_USE_HSE == 1)
     /*Switch the clock to HSE*/
     CLK_HSEConfig(CLK_HSE_ON);
-    while(((CLK->ECKCR) & CLK_ECKCR_HSERDY) != CLK_ECKCR_HSERDY) {}
+    while (((CLK->ECKCR) & CLK_ECKCR_HSERDY) != CLK_ECKCR_HSERDY) {
+    }
     CLK_SYSCLKSourceConfig(CLK_SYSCLKSource_HSE);
     CLK_SYSCLKSourceSwitchCmd(ENABLE);
-    while (((CLK->SWCR)& 0x01)==0x01);
+    while (((CLK->SWCR) & 0x01) == 0x01)
+        ;
 #else
     /*Switch the clock to HSI*/
     CLK_HSICmd(ENABLE);
-    while (((CLK->ICKCR)& CLK_ICKCR_HSIRDY)!= CLK_ICKCR_HSIRDY) {}
+    while (((CLK->ICKCR) & CLK_ICKCR_HSIRDY) != CLK_ICKCR_HSIRDY) {
+    }
     CLK_SYSCLKSourceConfig(CLK_SYSCLKSource_HSI);
     CLK_SYSCLKSourceSwitchCmd(ENABLE);
-    while (((CLK->SWCR)& 0x01)==0x01);
+    while (((CLK->SWCR) & 0x01) == 0x01)
+        ;
 #endif
-
 }
 
 #endif /* if (LP_USE_LOW_POWER_RUN == 1) */
@@ -238,9 +238,9 @@ static void LowPowerRunInit(LowPowerModes_td mode)
 void LowPowerEnable(LowPowerModes_td mode)
 {
     currentMode = mode;
-    switch(mode) {
+    switch (mode) {
         case MCU_RUN:
-        break;
+            break;
 
         /* Wait for interrupt */
         case WAIT_INTERRUPT:
@@ -249,7 +249,7 @@ void LowPowerEnable(LowPowerModes_td mode)
             RunBeforeLowPowerMode(mode);
             //
             wfi();
-        break;
+            break;
 
         /* Wait for event */
         case WAIT_EVENT:
@@ -258,7 +258,7 @@ void LowPowerEnable(LowPowerModes_td mode)
             RunBeforeLowPowerMode(mode);
             //
             wfe();
-        break;
+            break;
 
 #if (LP_USE_LOW_POWER_RUN == 1)
         /* Low power run */
@@ -270,7 +270,7 @@ void LowPowerEnable(LowPowerModes_td mode)
             //
             //PWR_UltraLowPowerCmd(ENABLE);
             LowPowerRunInit(mode);
-        break;
+            break;
 
         /* Low power wait mode */
         case LP_WAIT_MODE:
@@ -280,7 +280,7 @@ void LowPowerEnable(LowPowerModes_td mode)
             RunBeforeLowPowerMode(mode);
             //
             LowPowerRunInit(mode);
-        break;
+            break;
 #endif
 
         /* Enter active HAL mode */
@@ -291,7 +291,7 @@ void LowPowerEnable(LowPowerModes_td mode)
             RunBeforeLowPowerMode(mode);
             //
             halt();
-        break;
+            break;
 
         /* Active HALT mode */
         case HALT:
@@ -302,10 +302,8 @@ void LowPowerEnable(LowPowerModes_td mode)
             //
             //PWR_UltraLowPowerCmd(ENABLE);
             halt();
-        break;
-
+            break;
     }
-
 }
 
 /**
@@ -314,7 +312,8 @@ void LowPowerEnable(LowPowerModes_td mode)
   * @param  void
   * @retval ?
   */
-uint8_t LowPowerExit(void) {
+uint8_t LowPowerExit(void)
+{
     RunAfterExitLowPowerMode(currentMode);
     GPIOlowPowerExitConfig();
     enableInterrupts();
@@ -348,7 +347,8 @@ uint8_t LowPowerExit(void) {
   * @param  None
   * @retval None
   */
-__weak void GPIOlowPowerConfig(void) {
+__weak void GPIOlowPowerConfig(void)
+{
     nop();
 }
 
@@ -358,7 +358,8 @@ __weak void GPIOlowPowerConfig(void) {
   * @param  None
   * @retval None
   */
-__weak void GPIOwaitConfig(void) {
+__weak void GPIOwaitConfig(void)
+{
     nop();
 }
 
@@ -368,7 +369,8 @@ __weak void GPIOwaitConfig(void) {
   * @param  None
   * @retval None
   */
-__weak void GPIOlowPowerExitConfig(void) {
+__weak void GPIOlowPowerExitConfig(void)
+{
     nop();
 }
 
@@ -379,7 +381,8 @@ __weak void GPIOlowPowerExitConfig(void) {
   * @param  mode: Low power mode
   * @retval None
   */
-__weak void RunBeforeLowPowerMode(LowPowerModes_td mode) {
+__weak void RunBeforeLowPowerMode(LowPowerModes_td mode)
+{
     nop();
 }
 
@@ -389,9 +392,9 @@ __weak void RunBeforeLowPowerMode(LowPowerModes_td mode) {
   * @param  mode: Low power mode
   * @retval None
   */
-__weak void RunAfterExitLowPowerMode(LowPowerModes_td mode) {
+__weak void RunAfterExitLowPowerMode(LowPowerModes_td mode)
+{
     nop();
 }
-
 
 //EOF
