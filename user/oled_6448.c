@@ -332,39 +332,6 @@ void OLED_Init(void)
     OLED_SetXY(0, 0);
 }
 
-static void OLED_Update(uint8_t *tbl)
-{
-    uint8_t c, i, z;
-    static uint8_t x      = 128 / 4;
-    static uint8_t y      = 2;
-    static uint8_t TblCtr = 0x00;
-
-    c = tbl[TblCtr] - 32;
-    OLED_SetXY(x, y);
-    for (i = 0; i < 8; i++) {
-        z = F8X16[c * 16 + i];
-        OLED_WriteData(z);
-    }
-    OLED_SetXY(x, y + 1);
-    for (i = 8; i < 16; i++) {
-        z = F8X16[c * 16 + i];
-        OLED_WriteData(z);
-    }
-
-    TblCtr++;
-    if (TblCtr > 23) {
-        TblCtr = 0x00;
-        x      = 128 / 4;
-        y      = 2;
-    } else {
-        x += 8;
-        if (x == 0x60) {
-            x = 128 / 4;
-            y = y + 2;
-        }
-    }
-}
-
 static void OLED_ClearDispBuffer(uint8_t *tbl, uint8_t count)
 {
     uint8_t j;
@@ -374,7 +341,7 @@ static void OLED_ClearDispBuffer(uint8_t *tbl, uint8_t count)
     }
 }
 
-void OLED_Display(void)
+void OLED_DispBufferUpdate(void)
 {
     uint16_t tmp;
     struct time_type *time = RTC_GetTimeAddr();
@@ -411,8 +378,39 @@ void OLED_Display(void)
     Tbl[21] = ':';
     Tbl[22] = HexToAsc(time->sec / 10);
     Tbl[23] = HexToAsc(time->sec % 10);
+}
 
-    OLED_Update(Tbl);
+void OLED_Display(void)
+{
+    uint8_t c, i, z;
+    static uint8_t x      = 128 / 4;
+    static uint8_t y      = 2;
+    static uint8_t TblCtr = 0x00;
+
+    c = Tbl[TblCtr] - 32;
+    OLED_SetXY(x, y);
+    for (i = 0; i < 8; i++) {
+        z = F8X16[c * 16 + i];
+        OLED_WriteData(z);
+    }
+    OLED_SetXY(x, y + 1);
+    for (i = 8; i < 16; i++) {
+        z = F8X16[c * 16 + i];
+        OLED_WriteData(z);
+    }
+
+    TblCtr++;
+    if (TblCtr > 23) {
+        TblCtr = 0x00;
+        x      = 128 / 4;
+        y      = 2;
+    } else {
+        x += 8;
+        if (x == 0x60) {
+            x = 128 / 4;
+            y = y + 2;
+        }
+    }
 }
 
 #else

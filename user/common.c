@@ -199,6 +199,7 @@ void COMMON_Process(void)
     if (F_10MS) {
         F_10MS = RESET;
         COMMON_Count();
+        OLED_Display();
     }
     if (F_200MS) {
         F_200MS   = RESET;
@@ -223,7 +224,7 @@ void COMMON_Process(void)
         if ((secCount & 0x01) != 0x00) {
             Time_Deal();
         }
-        OLED_Display();
+        OLED_DispBufferUpdate();
     }
 
     LED_Management();
