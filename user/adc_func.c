@@ -50,8 +50,7 @@ uint16_t ADConversion(ADC_Channel_TypeDef channel)
     // Enable ADC1 Channels
     ADC_ChannelCmd(ADC1, channel, ENABLE);
     ADC_SoftwareStartConv(ADC1);
-    while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC))
-        ;
+    while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC));
     ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
     adc = ADC_GetConversionValue(ADC1);
     ADC_ChannelCmd(ADC1, channel, DISABLE);

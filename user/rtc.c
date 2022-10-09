@@ -7,7 +7,7 @@ rtc_counter_value_t TIME;
 
 void TimeInit(void)
 {
-    TIME.year  = 2018;
+    TIME.year  = 2022;
     TIME.month = 1;
     TIME.day   = 1;
     Week_Deal(TIME.year, TIME.month, TIME.day);

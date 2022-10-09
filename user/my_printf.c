@@ -3,6 +3,8 @@
 #include "common.h"
 #endif
 
+#if (MY_PRINTF)
+
 typedef char *va_list;
 #define _INTSIZEOF(n) ((sizeof(n) + sizeof(int) - 1) & ~(sizeof(int) - 1))
 
@@ -56,7 +58,7 @@ static uint8_t outs(uint8_t *s)
     return 0;
 }
 
-static int out_num(long n, int base, char lead, int maxwidth)
+static uint8_t out_num(int32_t n, uint8_t base, char lead, uint8_t maxwidth)
 {
     uint8_t m = 0;
     uint8_t buf[MAX_NUMBER_BYTES];
@@ -120,16 +122,23 @@ static uint8_t my_vprintf(const char *fmt, va_list ap)
 
         switch (*fmt) {
             case 'd':
-                out_num(va_arg(ap, uint16_t), 10, lead, maxwidth);
+                out_num(va_arg(ap, int32_t), 10, lead, maxwidth);
                 break;
-            //case 'o': out_num(va_arg(ap, unsigned int),  8,lead,maxwidth); break;
+            case 'o':
+                out_num(va_arg(ap, uint32_t), 8, lead, maxwidth);
+                break;
             case 'u':
-                out_num(va_arg(ap, uint16_t), 10, lead, maxwidth);
+                out_num(va_arg(ap, uint32_t), 10, lead, maxwidth);
                 break;
-            //case 'x': out_num(va_arg(ap, unsigned int), 16,lead,maxwidth); break;
-            //case 'c': outc(va_arg(ap, int   )); break;
-            //case 's': outs(va_arg(ap, char *)); break;
-
+            case 'x':
+                out_num(va_arg(ap, uint32_t), 16, lead, maxwidth);
+                break;
+            case 'c':
+                outc(va_arg(ap, uint8_t));
+                break;
+            case 's':
+                outs(va_arg(ap, uint8_t *));
+                break;
             default:
                 outc(*fmt);
                 break;
@@ -153,8 +162,8 @@ uint8_t printf(const char *fmt, ...)
 
 uint8_t my_printf_test(void)
 {
-    printf("This is www.100ask.org   my_printf test\n\r");
-    printf("test char =%c,%c\n\r", 'A', 'a');
+    printf("This is www.100ask.org my_printf test\n\r");
+    printf("test char =%c, %c\n\r", 'A', 'a');
     printf("test decimal number =%d\n\r", 123456);
     printf("test decimal number =%d\n\r", -123456);
     printf("test hex number =0x%x\n\r", 0x55aa55aa);
@@ -171,3 +180,12 @@ uint8_t my_printf_test(void)
 
     return 0;
 }
+
+#else
+
+uint8_t my_printf_test(void)
+{
+    return 0;
+}
+
+#endif

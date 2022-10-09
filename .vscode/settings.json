@@ -2,6 +2,8 @@
     "files.associations": {
         "*.c": "c",
         "common.h": "c",
-        "oled_6448.h": "c"
+        "oled_6448.h": "c",
+        "ntc.h": "c",
+        "stm8l15x_conf.h": "c"
     }
 }

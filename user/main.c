@@ -1,15 +1,3 @@
-/*
- *******************************************************************************
- * Filename    	: Main.c
- * Processor   	: STM8L051F3
- * Package type : SSOP 20pin
- * Main OSC    	: IRC_16MHz
- * SUB OSC     	: NO
- * Author      	: Wenhuafeng
- * Date        	: 201801010 15:50 ~
- *******************************************************************************
-*/
-
 /* Head files */
 #include "common.h"
 
@@ -40,6 +28,7 @@ void main(void)
 
     DelayMs(100);
     OLED_Init();
+    my_printf_test();
 
     do {
         if (F_ADC1_ConversionComplete) {
@@ -65,7 +54,8 @@ void main(void)
                 SetPwmDuty(221);
             }
 
-            Temperature = ReadTemperatureSensor();
+            //Temperature = ReadTemperatureSensor();
+            Temperature = NTC_ReadSensor();
             TempHeatControl(Temperature);
         }
         if (F_500MS) {

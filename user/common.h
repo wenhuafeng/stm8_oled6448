@@ -8,8 +8,10 @@
 #define OS_EXT
 #endif
 
-#define _TH_            1
-#define _OLED_6448_     1
+#define NTC         1
+#define _TH_        0
+#define _OLED_6448_ 1
+#define MY_PRINTF   0
 
 /* Includes system -----------------------------------------------------------*/
 #include <math.h>
@@ -33,6 +35,7 @@
 
 #include "th_test.h"
 #include "rtc.h"
+#include "ntc.h"
 #include "oled_6448.h"
 #include "my_printf.h"
 
