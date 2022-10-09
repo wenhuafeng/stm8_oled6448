@@ -1,6 +1,6 @@
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
-#include "common.h"
+#include "includes.h"
 #endif
 
 #define BAUDRATE 115200
@@ -62,17 +62,18 @@ void uart_rx_data(void)
 {
     uint8_t i;
 
-    if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET) {
-        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
-        if (g_uart_rxbuf.len >= sizeof(g_uart_rxbuf.buf)) {
-            USART_ReceiveData8(USART1);
-            return;
-            //goto enable_rx_int;
-        }
-        i                                    = USART_ReceiveData8(USART1);
-        g_uart_rxbuf.buf[g_uart_rxbuf.len++] = i;
-        if (i == '5') {
-            uart_send("ABC", 3);
-        }
+    if (USART_GetITStatus(USART1, USART_IT_RXNE) == RESET) {
+        return;
+    }
+    USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+
+    if (g_uart_rxbuf.len >= sizeof(g_uart_rxbuf.buf)) {
+        USART_ReceiveData8(USART1);
+        return;
+    }
+    i = USART_ReceiveData8(USART1);
+    g_uart_rxbuf.buf[g_uart_rxbuf.len++] = i;
+    if (i == '5') {
+        uart_send("ABC", 3);
     }
 }

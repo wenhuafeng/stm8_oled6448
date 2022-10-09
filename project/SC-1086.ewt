@@ -2145,6 +2145,9 @@
             <name>$PROJ_DIR$\..\user\adc_func.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\user\common.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\user\gp_sub.c</name>
         </file>
         <file>

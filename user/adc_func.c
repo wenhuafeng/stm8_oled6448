@@ -1,6 +1,6 @@
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
-#include "common.h"
+#include "includes.h"
 #endif
 
 #define _ADC_VALUE_1_  0x000
@@ -18,22 +18,6 @@
 uint16_t LEVEL_TBL_1[10] = {
     _ADC_VALUE_2_, _ADC_VALUE_3_, _ADC_VALUE_4_, _ADC_VALUE_5_,  _ADC_VALUE_6_,
     _ADC_VALUE_7_, _ADC_VALUE_8_, _ADC_VALUE_9_, _ADC_VALUE_10_, _ADC_VALUE_11_,
-};
-
-#define _LEVEL_1_ADC_VALUE_  (_ADC_VALUE_1_ + (_ADC_VALUE_2_ - _ADC_VALUE_1_) / 2)
-#define _LEVEL_2_ADC_VALUE_  (_ADC_VALUE_2_ + (_ADC_VALUE_3_ - _ADC_VALUE_2_) / 2)
-#define _LEVEL_3_ADC_VALUE_  (_ADC_VALUE_3_ + (_ADC_VALUE_4_ - _ADC_VALUE_3_) / 2)
-#define _LEVEL_4_ADC_VALUE_  (_ADC_VALUE_4_ + (_ADC_VALUE_5_ - _ADC_VALUE_4_) / 2)
-#define _LEVEL_5_ADC_VALUE_  (_ADC_VALUE_5_ + (_ADC_VALUE_6_ - _ADC_VALUE_5_) / 2)
-#define _LEVEL_6_ADC_VALUE_  (_ADC_VALUE_6_ + (_ADC_VALUE_7_ - _ADC_VALUE_6_) / 2)
-#define _LEVEL_7_ADC_VALUE_  (_ADC_VALUE_7_ + (_ADC_VALUE_8_ - _ADC_VALUE_7_) / 2)
-#define _LEVEL_8_ADC_VALUE_  (_ADC_VALUE_8_ + (_ADC_VALUE_9_ - _ADC_VALUE_8_) / 2)
-#define _LEVEL_9_ADC_VALUE_  (_ADC_VALUE_9_ + (_ADC_VALUE_10_ - _ADC_VALUE_9_) / 2)
-#define _LEVEL_10_ADC_VALUE_ (_ADC_VALUE_10_ + (_ADC_VALUE_11_ - _ADC_VALUE_10_) / 2)
-
-uint16_t LEVEL_TBL[10] = {
-    _LEVEL_1_ADC_VALUE_, _LEVEL_2_ADC_VALUE_, _LEVEL_3_ADC_VALUE_, _LEVEL_4_ADC_VALUE_, _LEVEL_5_ADC_VALUE_,
-    _LEVEL_6_ADC_VALUE_, _LEVEL_7_ADC_VALUE_, _LEVEL_8_ADC_VALUE_, _LEVEL_9_ADC_VALUE_, _LEVEL_10_ADC_VALUE_,
 };
 
 void SetPwmDuty(uint16_t temp)
@@ -116,11 +100,10 @@ uint8_t GetKnobSwitchLevel(void)
 {
     uint16_t Advalue;
     uint8_t i, j;
-    uint8_t temp[3] = { 0 };
+    uint8_t temp[3] = {0};
 
     for (i = 0; i < 3; i++) {
-        Advalue           = KnobSwitch();
-        KnobSwitchAdvalue = Advalue;
+        Advalue = KnobSwitch();
         for (j = 0; j < 10; j++) {
             if (Advalue < LEVEL_TBL_1[j]) {
                 temp[i] = j;
@@ -133,5 +116,19 @@ uint8_t GetKnobSwitchLevel(void)
         return j;
     } else {
         return 0;
+    }
+}
+
+FlagStatus F_ADC1_ConversionComplete;
+
+void ADC_SetConversionCompleteFlag(void)
+{
+    F_ADC1_ConversionComplete = SET;
+}
+
+void ADC_Process(void)
+{
+    if (F_ADC1_ConversionComplete) {
+        F_ADC1_ConversionComplete = RESET;
     }
 }

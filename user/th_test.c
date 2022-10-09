@@ -1,6 +1,6 @@
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
-#include "common.h"
+#include "includes.h"
 #endif
 
 #if (_TH_)

@@ -1,9 +1,14 @@
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
-#include "common.h"
+#include "includes.h"
 #endif
 
-rtc_counter_value_t TIME;
+struct time_type TIME;
+
+struct time_type *RTC_GetTimeAddr(void)
+{
+    return &TIME;
+}
 
 void TimeInit(void)
 {
@@ -20,7 +25,6 @@ void Time_Deal(void)
 {
     TIME.sec++;
     if (TIME.sec == 60) {
-        F_1MIN   = SET;
         TIME.sec = 0;
         TIME.min++;
         if (TIME.min == 60) {

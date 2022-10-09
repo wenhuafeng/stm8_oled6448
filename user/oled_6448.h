@@ -6,7 +6,6 @@ void I2C_PinLow(void);
 void OLED_Clear(void);
 void OLED_OFF(void);
 void OLED_Init(void);
-void OledDisp(void);
-void LCD_P8x16Str(void);
+void OLED_Display(void);
 
 #endif

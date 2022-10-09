@@ -1,6 +1,6 @@
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
-#include "common.h"
+#include "includes.h"
 #endif
 
 #if defined(NTC) && (NTC)
@@ -12,6 +12,8 @@
 #define NTC_PULL_UP   (10)   // resistor 10K
 #define ADC_BIT_NUM   (4096) // 12bit ADC
 #define AD_OF_NTC(r)  ((uint16_t)(r / (r + NTC_PULL_UP) * ADC_BIT_NUM + 0.5))
+
+static int16_t temperature;
 
 /*
  *  Vj = 3.3 * (Rt / (Rt + Ru))   --- (1)
@@ -163,14 +165,26 @@ int16_t NTC_ReadSensor(void)
         temp    = (temp + TEMP_MIN);
     }
 
+    temperature = temp;
+
     return temp;
+}
+
+int16_t NTC_GetTemperature(void)
+{
+    return temperature;
 }
 
 #else
 
 int16_t NTC_ReadSensor(void)
 {
-    return 0;
+    return TEMP_MIN;
+}
+
+int16_t NTC_GetTemperature(void)
+{
+    return TEMP_MIN;
 }
 
 #endif

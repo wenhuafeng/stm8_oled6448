@@ -4,6 +4,8 @@
         "common.h": "c",
         "oled_6448.h": "c",
         "ntc.h": "c",
-        "stm8l15x_conf.h": "c"
+        "stm8l15x_conf.h": "c",
+        "includes.h": "c",
+        "key_process.h": "c"
     }
 }

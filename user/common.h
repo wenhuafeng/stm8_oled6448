@@ -1,42 +1,26 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-//Data Type const
-#ifdef OS_GLOBALS
-#define OS_EXT extern
-#else
-#define OS_EXT
-#endif
+#define _TIME_BASE_xMS_ (10)
+#define _VENT_DELAY_ (1000 / _TIME_BASE_xMS_)
 
-#define NTC         1
-#define _TH_        0
-#define _OLED_6448_ 1
-#define MY_PRINTF   0
+uint8_t COMMON_GetPumpSpeed(void);
 
-/* Includes system -----------------------------------------------------------*/
-#include <math.h>
-//#include <intrins.h>
-//#include <stdio.h>
-#include <string.h>
+void COMMON_PushKeyHeat(int16_t temp);
+void COMMON_ReleKeyHeat(int16_t temp);
+void COMMON_SetWaterPumpOnFlag(FlagStatus flag);
 
-/* Includes User -------------------------------------------------------------*/
-#include "stm8l15x_conf.h"
+void COMMON_SetVentDelay(uint16_t vent);
+void COMMON_VentCountFunc(void);
 
-#include "type_define.h"
-//#include "delay.h"
-#include "main.h"
-#include "gp_sub.h"
-#include "uart.h"
-#include "initialization.h"
-//#include "stm8l_low_power.h"
-#include "adc_func.h"
-#include "key_process.h"
-#include "port_define.h"
+void COMMON_SetHeatSpeed(uint8_t speed);
+void COMMON_SetSystickFlag(void);
+void COMMON_SetRtcFlag(void);
+void COMMON_Count(void);
+void COMMON_EXTI6_Process(void);
+void COMMON_EXTI7_Process(void);
 
-#include "th_test.h"
-#include "rtc.h"
-#include "ntc.h"
-#include "oled_6448.h"
-#include "my_printf.h"
+void COMMON_Init(void);
+void COMMON_Process(void);
 
 #endif

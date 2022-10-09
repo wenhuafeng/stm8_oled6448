@@ -9,4 +9,7 @@ void SortRoutine(uint16_t *buf, uint8_t num);
 uint16_t GetAverageValue(uint16_t *ptr, uint8_t num);
 uint16_t ADConversion(ADC_Channel_TypeDef channel);
 
+void ADC_SetConversionCompleteFlag(void);
+void ADC_Process(void);
+
 #endif

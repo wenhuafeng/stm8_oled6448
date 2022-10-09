@@ -1,6 +1,6 @@
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
-#include "common.h"
+#include "includes.h"
 #endif
 
 #if (_OLED_6448_)
@@ -59,10 +59,6 @@ enum {
 #define I2C_OLED   0x78
 #define Brightness 250
 
-//==============================================================================
-//==============================================================================
-//ASCII
-//8*16
 const uint8_t F8X16[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, /*" ",0*/
     0x00, 0x00, 0x00, 0xF8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x33, 0x30, 0x00, 0x00, 0x00, /*"!",1*/
@@ -231,7 +227,20 @@ uint8_t I2C_SendByte(uint8_t Byte)
     return F_temp;
 }
 
-uint8_t Tbl[24];
+static uint8_t Tbl[24];
+
+static uint8_t HexToAsc(uint8_t aHex)
+{
+    if (aHex <= 9) {
+        aHex += 0x30;
+    } else if ((aHex >= 10) && (aHex <= 15)) {
+        aHex += 0x37;
+    } else {
+        aHex = 0xff;
+    }
+
+    return aHex;
+}
 
 void OLED_WriteCmd(uint8_t Cmd)
 {
@@ -281,13 +290,14 @@ void OLED_Clear(void)
 void OLED_Init(void)
 {
     /*
-  LCD_RESET = 1;
-  DelayMs(10);
-  LCD_RESET = 0;
-  DelayMs(10);
-  LCD_RESET = 1;
-  DelayMs(10);
-  */
+    LCD_RESET = 1;
+    DelayMs(10);
+    LCD_RESET = 0;
+    DelayMs(10);
+    LCD_RESET = 1;
+    DelayMs(10);
+    */
+
     I2C_Stop();
     DelayMs(10);
     OLED_WriteCmd(0xae);       //--turn off oled panel
@@ -322,14 +332,14 @@ void OLED_Init(void)
     OLED_SetXY(0, 0);
 }
 
-void LCD_P8x16Str(void)
+static void OLED_Update(uint8_t *tbl)
 {
     uint8_t c, i, z;
     static uint8_t x      = 128 / 4;
     static uint8_t y      = 2;
     static uint8_t TblCtr = 0x00;
 
-    c = Tbl[TblCtr] - 32;
+    c = tbl[TblCtr] - 32;
     OLED_SetXY(x, y);
     for (i = 0; i < 8; i++) {
         z = F8X16[c * 16 + i];
@@ -355,39 +365,35 @@ void LCD_P8x16Str(void)
     }
 }
 
-uint8_t HexToAsc(uint8_t aHex)
-{
-    if (aHex <= 9) {
-        aHex += 0x30;
-    } else if ((aHex >= 10) && (aHex <= 15)) {
-        aHex += 0x37;
-    } else {
-        aHex = 0xff;
-    }
-
-    return aHex;
-}
-
-void OledDisp(void)
+static void OLED_ClearDispBuffer(uint8_t *tbl, uint8_t count)
 {
     uint8_t j;
-    uint16_t tmp;
 
-    for (j = 0; j < 24; j++) {
-        Tbl[j] = ' ';
+    for (j = 0; j < count; j++) {
+        tbl[j] = ' ';
     }
+}
+
+void OLED_Display(void)
+{
+    uint16_t tmp;
+    struct time_type *time = RTC_GetTimeAddr();
+    int16_t temperature = NTC_GetTemperature();
+    uint8_t PumpSpeed = COMMON_GetPumpSpeed();
+
+    OLED_ClearDispBuffer(Tbl, sizeof(Tbl));
 
     //line 1
     Tbl[0] = '1';
     Tbl[1] = ':';
-    Tbl[2] = ' ';                      //HexToAsc(FlowMeterCtr/10000);
-    Tbl[3] = HexToAsc(PumpSpeed / 10); //HexToAsc(FlowMeterCtr/1000%10);
-    Tbl[4] = HexToAsc(PumpSpeed % 10); //HexToAsc(FlowMeterCtr%1000/100);
-    Tbl[5] = ' ';                      //HexToAsc(FlowMeterCtr%100/10);
-    Tbl[6] = ' ';                      //HexToAsc(FlowMeterCtr%100%10);
+    Tbl[2] = ' ';
+    Tbl[3] = HexToAsc(PumpSpeed / 10);
+    Tbl[4] = HexToAsc(PumpSpeed % 10);
+    Tbl[5] = ' ';
+    Tbl[6] = ' ';
     Tbl[7] = ' ';
     //line 2
-    tmp     = (uint16_t)Temperature;
+    tmp     = temperature;
     Tbl[8]  = '2';
     Tbl[9]  = ':';
     Tbl[10] = HexToAsc(tmp / 1000 % 10);
@@ -397,20 +403,21 @@ void OledDisp(void)
     Tbl[14] = HexToAsc(tmp % 100 % 10);
     Tbl[15] = ' ';
     //line 3
-    Tbl[16] = HexToAsc(TIME.hour / 10);
-    Tbl[17] = HexToAsc(TIME.hour % 10);
+    Tbl[16] = HexToAsc(time->hour / 10);
+    Tbl[17] = HexToAsc(time->hour % 10);
     Tbl[18] = ':';
-    Tbl[19] = HexToAsc(TIME.min / 10);
-    Tbl[20] = HexToAsc(TIME.min % 10);
+    Tbl[19] = HexToAsc(time->min / 10);
+    Tbl[20] = HexToAsc(time->min % 10);
     Tbl[21] = ':';
-    Tbl[22] = HexToAsc(TIME.sec / 10);
-    Tbl[23] = HexToAsc(TIME.sec % 10);
+    Tbl[22] = HexToAsc(time->sec / 10);
+    Tbl[23] = HexToAsc(time->sec % 10);
+
+    OLED_Update(Tbl);
 }
 
 #else
 
-void LCD_P8x16Str(void) {}
 void OLED_Init(void) {}
-void OledDisp(void) {}
+void OLED_Display(void) {}
 
 #endif

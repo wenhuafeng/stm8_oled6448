@@ -1,9 +1,14 @@
 #ifndef OS_MASTER_FILE
 #define OS_GLOBALS
-#include "common.h"
+#include "includes.h"
 #endif
 
 /* Private define ------------------------------------------------------------*/
+#define _PWM_OUTPUT_OFF_  221
+#define _PWM_OUTPUT_LOW_  173
+#define _PWM_OUTPUT_MID_  103
+#define _PWM_OUTPUT_HIGH_ 0
+
 #define TIM2_PERIOD (uint8_t)220
 #define TIM2_PULSE  _PWM_OUTPUT_OFF_     //duty (0=100%,221=0%)
 #define TIM3_PERIOD (uint16_t)(1250 - 1) //(16 MHz/128 = 125000Hz, X=0.01ms*125000-1)
@@ -360,6 +365,7 @@ void RTC_Config(void)
   */
 void Sys_Init(void)
 {
+    disableInterrupts();
     CLK_Config_HSI();
     RTC_Config();
     PORT_Config();
@@ -369,4 +375,5 @@ void Sys_Init(void)
     //TIM2_Config();
     TIM3_Config();
     USART_Config();
+    enableInterrupts();
 }
