@@ -12,6 +12,7 @@ CHECKSUM_OUT = 'checksum.exe sc1086.bin CRC32 SHA256'
 
 # IAR path
 iar_build_exe = "D:/Program Files (x86)/IAR Systems/Embedded Workbench 8.0/common/bin/IarBuild.exe"
+iar_build_log = 'cat ./project/build_log.txt'
 
 # output files path
 iar_source_file_hex = 'project/Debug/Exe/sc1086.hex'
@@ -44,7 +45,8 @@ def cp_build_file(source, target):
 
 def iar_build():
     print("cc type = iar")
-    exitcode, out, err = get_exitcode_stdout_stderr([iar_build_exe, "project/sc1086.ewp", "-build", "Debug", "-log", "all", ">", "project/build.txt"])
+    exitcode, out, err = get_exitcode_stdout_stderr([iar_build_exe, "project/sc1086.ewp", "-build", "Debug", "-log", "info", ">", "project/build_log.txt"])
+    os.system(iar_build_log)
     cp_build_file(iar_source_file_bin, target_path)
 
 def sdcc_build():
@@ -62,8 +64,7 @@ def stlink_download():
         print("unsupport platform")
         sys.exit(2)
 
-    exec_cmd = "%s -f %s -f %s -c %s\n" % \
-               (openocd_exe, stlink_config_file, chip_config_file, program_cmd)
+    exec_cmd = "%s -f %s -f %s -c %s\n" % (openocd_exe, stlink_config_file, chip_config_file, program_cmd)
     print("execute cmd: %s" % exec_cmd)
     subprocess.call(exec_cmd, shell=True)
 

@@ -8,13 +8,10 @@
 #define OS_EXT
 #endif
 
-#define NTC         1
-#define _TH_        0
-#define _OLED_6448_ 1
-#define MY_PRINTF   0
-
-//#include <math.h>
-//#include <string.h>
+#define NTC               1
+#define TH                0
+#define SUPPORT_OLED_6448 1
+#define SUPPORT_MY_PRINTF 0
 
 #include "stm8l15x_conf.h"
 #include "stm8l15x_it.h"

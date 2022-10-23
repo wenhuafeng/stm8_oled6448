@@ -222,7 +222,7 @@ void COMMON_Process(void)
         F_500MS = RESET;
         secCount++;
         if ((secCount & 0x01) != 0x00) {
-            Time_Deal();
+            TIME_Run();
         }
         OLED_DispBufferUpdate();
     }

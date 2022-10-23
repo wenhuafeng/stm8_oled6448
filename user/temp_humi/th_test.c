@@ -3,7 +3,7 @@
 #include "includes.h"
 #endif
 
-#if (_TH_)
+#if (TH)
 
 #define _TEMP_TOTAL_NUM_ (161)
 #define _ADC_REF_VOL_    (3.3)

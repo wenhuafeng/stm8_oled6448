@@ -3,9 +3,9 @@
 #include "includes.h"
 #endif
 
-struct time_type TIME;
+struct TimeType TIME;
 
-struct time_type *RTC_GetTimeAddr(void)
+struct TimeType *RTC_GetTimeAddr(void)
 {
     return &TIME;
 }
@@ -21,69 +21,92 @@ void TimeInit(void)
     TIME.sec  = 0;
 }
 
-void Time_Deal(void)
+static uint8_t GetMaxDay(uint16_t year, uint8_t month)
 {
-    TIME.sec++;
-    if (TIME.sec == 60) {
-        TIME.sec = 0;
-        TIME.min++;
-        if (TIME.min == 60) {
-            TIME.min = 0;
-            TIME.hour++;
-            if (TIME.hour > 23) {
-                TIME.hour = 0;
-                TIME.day++;
-                if (TIME.day > Date_Day(TIME.year, TIME.month)) {
-                    TIME.day = 1;
-                    TIME.month++;
-                    if (TIME.month > 12) {
-                        TIME.month = 1;
-                        TIME.year++;
-                    }
-                }
-                Week_Deal(TIME.year, TIME.month, TIME.day); //week
-            }
-        }
-    }
-}
+    uint8_t day;
+    uint8_t daysTable[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-uint8_t Date_Day(uint16_t Year, uint8_t Month)
-{
-    uint8_t day_temp;
-    uint8_t const_days[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-    if (Month == 2) {
-        if (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0)) {
-            day_temp = 29;
+    if (month == 2) {
+        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
+            day = 29;
         } else {
-            day_temp = 28;
+            day = 28;
         }
     } else {
-        day_temp = const_days[Month];
+        day = daysTable[month];
     }
 
-    return day_temp;
+    return day;
 }
 
-void Week_Deal(uint16_t Year, uint8_t Month, uint8_t Day)
+static void CalculateWeek(struct TimeType *time)
 {
-    int16_t temp_year = 0;
-    int8_t temp_cen   = 0;
-    int8_t temp_month = 0;
-    int8_t week_data;
+    int16_t yearTemp = 0;
+    int16_t yearHigh;
+    int16_t yearLow;
+    int8_t monthTemp = 0;
+    int8_t wk;
 
-    if (Month < 3) {
-        temp_month = Month + 12;
-        temp_year  = Year - 1;
-    } else {
-        temp_month = Month;
-        temp_year  = Year;
+    if (time == NULL) {
+        return;
     }
 
-    temp_cen  = temp_year / 100; //C;
-    temp_year = temp_year % 100; //Y
+    if (time->month < 3) {
+        monthTemp = time->month + 12;
+        yearTemp  = time->year - 1;
+    } else {
+        monthTemp = time->month;
+        yearTemp  = time->year;
+    }
 
-    week_data = temp_year + temp_year / 4 + temp_cen / 4;
-    week_data = week_data - 2 * temp_cen + 26 * (temp_month + 1) / 10 + Day - 1;
-    TIME.week = (week_data + 140) % 7;
+    yearHigh = yearTemp / 100;
+    yearLow  = yearTemp % 100;
+
+    wk = yearLow + (yearLow / 4) + (yearHigh / 4);
+    wk = wk - (2 * yearHigh) + (26 * (monthTemp + 1) / 10) + time->day - 1;
+    wk = (wk + 140) % 7;
+
+    time->week = wk;
+}
+
+bool TIME_Run(void)
+{
+    struct TimeType *time = &TIME;
+
+    time->sec++;
+    if (time->sec < 60) {
+        return FALSE;
+    }
+
+    time->sec = 0;
+    time->min++;
+    if (time->min < 60) {
+        return FALSE;
+    }
+
+    time->min = 0;
+    time->hour++;
+    if (time->hour < 24) {
+        return FALSE;
+    }
+
+    time->hour = 0;
+    time->day++;
+    if (time->day <= GetMaxDay(time->year, time->month)) {
+        goto calc_week;
+    }
+
+    time->day = 1;
+    time->month++;
+    if (time->month < 13) {
+        goto calc_week;
+    }
+
+    time->month = 1;
+    time->year++;
+
+calc_week:
+    CalculateWeek(time);
+
+    return TRUE;
 }

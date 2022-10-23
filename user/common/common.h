@@ -1,9 +1,6 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#define _TIME_BASE_xMS_ (10)
-#define _VENT_DELAY_ (1000 / _TIME_BASE_xMS_)
-
 uint8_t COMMON_GetPumpSpeed(void);
 
 void COMMON_PushKeyHeat(int16_t temp);

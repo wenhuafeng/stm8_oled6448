@@ -1,0 +1,42 @@
+
+     IAR Command Line Build Utility V8.0.9.4904
+     Copyright 2002-2017 IAR Systems AB.
+
+Building configuration: sc1086 - Debug
+Updating build tree...
+
+27  file(s) deleted.
+Updating build tree...
+adc_func.c 
+common.c 
+gp_sub.c 
+initialization.c 
+key_process.c 
+main.c 
+my_printf.c 
+ntc.c 
+oled_6448.c 
+rtc.c 
+stm8l15x_adc.c 
+stm8l15x_clk.c 
+stm8l15x_dma.c 
+stm8l15x_exti.c 
+stm8l15x_gpio.c 
+stm8l15x_i2c.c 
+stm8l15x_it.c 
+stm8l15x_pwr.c 
+stm8l15x_rst.c 
+stm8l15x_rtc.c 
+stm8l15x_syscfg.c 
+stm8l15x_tim3.c 
+stm8l15x_usart.c 
+stm8l15x_wfe.c 
+th_test.c 
+uart.c 
+Linking
+sc1086.out
+Output Converter
+
+Total number of errors: 0
+Total number of warnings: 0
+

@@ -23,6 +23,9 @@ FlagStatus F_TwoKey;
 uint8_t Key;
 uint8_t OldKey;
 
+#define _TIME_BASE_xMS_ (10)
+#define _VENT_DELAY_ (1000 / _TIME_BASE_xMS_)
+
 void ScanKey(void)
 {
     if (GPIO_ReadInputDataBit(KEY_PORT, KEY_PIN)) {

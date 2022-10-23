@@ -3,7 +3,7 @@
 #include "includes.h"
 #endif
 
-#if (MY_PRINTF)
+#if (SUPPORT_MY_PRINTF)
 
 typedef char *va_list;
 #define _INTSIZEOF(n) ((sizeof(n) + sizeof(int) - 1) & ~(sizeof(int) - 1))

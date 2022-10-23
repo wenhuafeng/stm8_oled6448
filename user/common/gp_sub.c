@@ -3,13 +3,7 @@
 #include "includes.h"
 #endif
 
-/********************************************************************/ /**
-  * @brief  delay for some time in ms unit
-  * @caller auto_test
-  * @param  n_ms is how many ms of time to delay
-  * @retval None
- *********************************************************************/
-#ifdef _DELAY_MS_1_
+#ifdef DELAY_MS
 void DelayMs(uint16_t ms)
 {
     /* Init TIMER 4 */
@@ -40,15 +34,8 @@ void DelayMs(uint16_t ms)
 }
 #endif
 
-/********************************************************************/ /**
-  * @brief  delay for some time in 10us unit(partial accurate)
-  * @caller auto_test
-  * @param n_10us is how many 10us of time to delay
-  * @retval None
- *********************************************************************/
-#ifdef _DELAY_US_1_
-
-void DelayUs(uint16_t n_10us)
+#ifdef DELAY_US
+void DelayUs(uint16_t us)
 {
     /* Init TIMER 4 */
     CLK_PeripheralClockConfig(CLK_Peripheral_TIM4, ENABLE);
@@ -68,7 +55,7 @@ void DelayUs(uint16_t n_10us)
     /* Enable Counter */
     TIM4->CR1 |= TIM4_CR1_CEN;
 
-    while (n_10us--) {
+    while (us--) {
         while ((TIM4->SR1 & TIM4_SR1_UIF) == 0)
             ;
         TIM4->SR1 &= ~TIM4_SR1_UIF;
@@ -78,5 +65,4 @@ void DelayUs(uint16_t n_10us)
     TIM4->CR1 &= ~TIM4_CR1_CEN;
     CLK_PeripheralClockConfig(CLK_Peripheral_TIM4, DISABLE);
 }
-
 #endif
