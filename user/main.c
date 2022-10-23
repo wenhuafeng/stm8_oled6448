@@ -1,14 +1,14 @@
+/*
+ * Project:  sc1086
+ * MCU:      STM8L051F3
+ * Main OSC: IRC_16MHz
+ * Sub OSC:  IRC_32.768KHZ
+ * Author:   wenhuafeng
+ */
+
 #include "includes.h"
 
-#warning message "Software_Version: <V300>"
-#warning message "Software_Date:    2019/01/12"
-#warning message "Software_Project: SC-1086"
-#warning message "Software_MCU:     STM8L051F3"
-#warning message "Main_OSC:         IRC_16MHz"
-#warning message "SUB_OSC:          IRC_32.768KHZ"
-#warning message "Author:           wenhuafeng"
-
-CONST uint8_t Version[3] = "300";
+#define SOFTWARE_VERSION "101"
 
 void main(void)
 {
