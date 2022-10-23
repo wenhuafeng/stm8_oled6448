@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <settings>
     <DebugChecksum>
-        <Checksum>2791918134</Checksum>
+        <Checksum>2226021785</Checksum>
     </DebugChecksum>
     <Stack>
         <FillEnabled>0</FillEnabled>
@@ -14,6 +14,9 @@
         <LimitSize>0</LimitSize>
         <ByteLimit>50</ByteLimit>
     </Stack>
+    <CallStack>
+        <ShowArgs>0</ShowArgs>
+    </CallStack>
     <DataSample>
         <LogEnabled>0</LogEnabled>
         <GraphEnabled>0</GraphEnabled>
@@ -28,9 +31,6 @@
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
-    <CallStack>
-        <ShowArgs>0</ShowArgs>
-    </CallStack>
     <Breakpoints>
         <Count>0</Count>
     </Breakpoints>

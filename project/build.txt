@@ -1,0 +1,401 @@
+
+     IAR Command Line Build Utility V8.0.9.4904
+     Copyright 2002-2017 IAR Systems AB.
+
+Building configuration: sc1086 - Debug
+Updating build tree...
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_adc.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_clk.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_dma.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_exti.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_gpio.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_i2c.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_pwr.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_rst.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_rtc.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_syscfg.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_tim3.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_usart.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_wfe.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\adc_func.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\common.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\gp_sub.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\initialization.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\key_process.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\main.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\my_printf.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\ntc.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\oled_6448.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\rtc.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_it.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\th_test.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\uart.o
+D:\src\0_examples\STM8\sc1086\program\project\Debug\List\sc1086.map
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Exe\sc1086.out
+D:\src\0_examples\STM8\sc1086\program\project\Debug\Exe\sc1086.bin
+
+29  file(s) deleted.
+Updating build tree...
+
+adc_func.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\bsp\adc_func.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 430 bytes of CODE  memory
+   3 bytes of CONST memory
+  21 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+common.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\common\common.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 486 bytes of CODE memory
+  18 bytes of DATA memory
+
+Errors: none
+Warnings: none
+
+gp_sub.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\common\gp_sub.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 126 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+initialization.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\bsp\initialization.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 521 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+key_process.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\key\key_process.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 273 bytes of CODE memory
+   8 bytes of DATA memory
+
+Errors: none
+Warnings: none
+
+main.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\main.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+D:\src\0_examples\STM8\sc1086\program\user\main.c(3) : Warning[Pe1105]: #warning directive: message "Software_Version: <V300>"
+D:\src\0_examples\STM8\sc1086\program\user\main.c(4) : Warning[Pe1105]: #warning directive: message "Software_Date:    2019/01/12"
+D:\src\0_examples\STM8\sc1086\program\user\main.c(5) : Warning[Pe1105]: #warning directive: message "Software_Project: SC-1086"
+D:\src\0_examples\STM8\sc1086\program\user\main.c(6) : Warning[Pe1105]: #warning directive: message "Software_MCU:     STM8L051F3"
+D:\src\0_examples\STM8\sc1086\program\user\main.c(7) : Warning[Pe1105]: #warning directive: message "Main_OSC:         IRC_16MHz"
+D:\src\0_examples\STM8\sc1086\program\user\main.c(8) : Warning[Pe1105]: #warning directive: message "SUB_OSC:          IRC_32.768KHZ"
+D:\src\0_examples\STM8\sc1086\program\user\main.c(9) : Warning[Pe1105]: #warning directive: message "Author:           wenhuafeng"
+ 
+ 11 bytes of CODE  memory
+  3 bytes of CONST memory
+
+Errors: none
+Warnings: 7
+
+my_printf.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\print\my_printf.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 2 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+ntc.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\temp_humi\ntc.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 409 bytes of CODE  memory
+ 102 bytes of CONST memory
+   2 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+oled_6448.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\oled_6448\oled_6448.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 918 bytes of CODE  memory
+ 432 bytes of CONST memory
+  27 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+rtc.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\bsp\rtc.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 348 bytes of CODE  memory
+  13 bytes of CONST memory
+   8 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_adc.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_adc.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 484 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_clk.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_clk.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 647 bytes of CODE  memory
+   5 bytes of CONST memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_dma.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_dma.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 462 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_exti.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_exti.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 540 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_gpio.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_gpio.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 195 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_i2c.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_i2c.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 888 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_it.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\bsp\stm8l15x_it.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 162 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_pwr.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_pwr.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 148 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_rst.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_rst.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 23 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_rtc.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_rtc.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 2 007 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_syscfg.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_syscfg.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 391 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_tim3.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_tim3.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 1 322 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_usart.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_usart.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 684 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+stm8l15x_wfe.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\src\stm8l15x_wfe.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 298 bytes of CODE memory
+
+Errors: none
+Warnings: none
+
+th_test.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\temp_humi\th_test.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+
+
+Errors: none
+Warnings: none
+
+uart.c 
+iccstm8.exe D:\src\0_examples\STM8\sc1086\program\user\bsp\uart.c -e -Ohz --debug --code_model small --data_model medium -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj --dlib_config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\LIB\dlstm8smn.h -D STM8L05X_LD_VL -I D:\src\0_examples\STM8\sc1086\program\project\..\user\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\bsp\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\common\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\key\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\oled_6448\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\print\ -I D:\src\0_examples\STM8\sc1086\program\project\..\user\temp_humi\ -I D:\src\0_examples\STM8\sc1086\program\project\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc\ --vregs 16
+
+   IAR C/C++ Compiler V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+   Standalone license - IAR Embedded Workbench for STMicroelectronics STM8
+ 
+ 193 bytes of CODE  memory
+   4 bytes of CONST memory
+ 132 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+Linking
+ilinkstm8.exe D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\adc_func.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\common.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\gp_sub.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\initialization.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\key_process.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\main.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\my_printf.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\ntc.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\oled_6448.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\rtc.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_adc.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_clk.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_dma.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_exti.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_gpio.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_i2c.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_it.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_pwr.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_rst.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_rtc.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_syscfg.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_tim3.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_usart.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\stm8l15x_wfe.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\th_test.o D:\src\0_examples\STM8\sc1086\program\project\Debug\Obj\uart.o --redirect _Printf=_PrintfSmall --redirect _Scanf=_ScanfSmall -o D:\src\0_examples\STM8\sc1086\program\project\Debug\Exe\sc1086.out --map D:\src\0_examples\STM8\sc1086\program\project\Debug\List\sc1086.map --config D:/Program Files (x86)\IAR Systems\Embedded Workbench 8.0\stm8\config\lnkstm8l051f3.icf --config_def _CSTACK_SIZE=0x100 --config_def _HEAP_SIZE=0x100 --entry __iar_program_start --debug_lib
+
+   IAR ELF Linker V3.10.1.201 for STM8
+   Copyright 2010-2017 IAR Systems AB.
+
+  6 778 bytes of readonly  code memory
+    727 bytes of readonly  data memory
+    485 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
+
+Link time:   0.08 (CPU)   0.08 (elapsed)
+
+sc1086.out
+Output Converter
+ielftool.exe --bin --verbose D:\src\0_examples\STM8\sc1086\program\project\Debug\Exe\sc1086.out D:\src\0_examples\STM8\sc1086\program\project\Debug\Exe\sc1086.bin
+
+   IAR ELF Tool V9.23.2.189 [BUILT at IAR]
+   Copyright 2007-2017 IAR Systems AB.
+
+Loading D:\src\0_examples\STM8\sc1086\program\project\Debug\Exe\sc1086.out
+Saving binary file to D:\src\0_examples\STM8\sc1086\program\project\Debug\Exe\sc1086.bin
+
+
+Total number of errors: 0
+Total number of warnings: 7
+

@@ -151,7 +151,7 @@
                 <option>
                     <name>IccOptStrategy</name>
                     <version>0</version>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IccOptLevelSlave</name>
@@ -257,6 +257,12 @@
                 <option>
                     <name>CCIncludePath2</name>
                     <state>$PROJ_DIR$\..\user</state>
+                    <state>$PROJ_DIR$\..\user\bsp</state>
+                    <state>$PROJ_DIR$\..\user\common</state>
+                    <state>$PROJ_DIR$\..\user\key</state>
+                    <state>$PROJ_DIR$\..\user\oled_6448</state>
+                    <state>$PROJ_DIR$\..\user\print</state>
+                    <state>$PROJ_DIR$\..\user\temp_humi</state>
                     <state>$PROJ_DIR$\..\std_lib\STM8L15x-16x-05x-AL31-L_StdPeriph_Lib\Libraries\STM8L15x_StdPeriph_Driver\inc</state>
                 </option>
                 <option>
@@ -1649,43 +1655,43 @@
     <group>
         <name>user</name>
         <file>
-            <name>$PROJ_DIR$\..\user\adc_func.c</name>
+            <name>$PROJ_DIR$\..\user\bsp\adc_func.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\common.c</name>
+            <name>$PROJ_DIR$\..\user\common\common.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\gp_sub.c</name>
+            <name>$PROJ_DIR$\..\user\common\gp_sub.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\initialization.c</name>
+            <name>$PROJ_DIR$\..\user\bsp\initialization.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\key_process.c</name>
+            <name>$PROJ_DIR$\..\user\key\key_process.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\user\main.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\my_printf.c</name>
+            <name>$PROJ_DIR$\..\user\print\my_printf.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\ntc.c</name>
+            <name>$PROJ_DIR$\..\user\temp_humi\ntc.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\oled_6448.c</name>
+            <name>$PROJ_DIR$\..\user\oled_6448\oled_6448.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\rtc.c</name>
+            <name>$PROJ_DIR$\..\user\bsp\rtc.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\stm8l15x_it.c</name>
+            <name>$PROJ_DIR$\..\user\bsp\stm8l15x_it.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\th_test.c</name>
+            <name>$PROJ_DIR$\..\user\temp_humi\th_test.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\user\uart.c</name>
+            <name>$PROJ_DIR$\..\user\bsp\uart.c</name>
         </file>
     </group>
 </project>

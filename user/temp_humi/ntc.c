@@ -3,8 +3,6 @@
 #include "includes.h"
 #endif
 
-#if defined(NTC) && (NTC)
-
 #define TMPRREF(x)    ((int16_t)((x) * 10.0))
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 #define TEMP_MIN      (0)    // 0C
@@ -12,6 +10,8 @@
 #define NTC_PULL_UP   (10)   // resistor 10K
 #define ADC_BIT_NUM   (4096) // 12bit ADC
 #define AD_OF_NTC(r)  ((uint16_t)(r / (r + NTC_PULL_UP) * ADC_BIT_NUM + 0.5))
+
+#if defined(NTC) && (NTC)
 
 static int16_t temperature;
 
