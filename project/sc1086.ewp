@@ -488,7 +488,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>SC-1086.hex</state>
+                    <state>sc1086.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -543,7 +543,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>RV1108KW.out</state>
+                    <state>sc1086.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
