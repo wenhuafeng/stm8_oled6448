@@ -8,10 +8,11 @@ import subprocess
 import shutil
 from subprocess import Popen, PIPE
 
-CHECKSUM_OUT = 'checksum.exe mk12.hex CRC32 SHA256'
+CHECKSUM_OUT = 'checksum.exe sc1086.bin CRC32 SHA256'
 
 iar_build_exe = "D:/Program Files (x86)/IAR Systems/Embedded Workbench 8.0/common/bin/IarBuild.exe"
 iar_source_file_hex = 'project/Debug/Exe/sc1086.hex'
+iar_source_file_bin = 'project/Debug/Exe/sc1086.bin'
 target_path = 'user/output'
 
 def get_exitcode_stdout_stderr(args):
@@ -36,7 +37,7 @@ def cp_build_file(source, target):
 def iar_build():
     print("cc type = iar")
     exitcode, out, err = get_exitcode_stdout_stderr([iar_build_exe, "project/sc1086.ewp", "-build", "Debug", "-log", "all"])
-    cp_build_file(iar_source_file_hex, target_path)
+    cp_build_file(iar_source_file_bin, target_path)
 
 def sdcc_build():
     return
@@ -59,7 +60,7 @@ def main_func(parameter):
     start = datetime.datetime.now()
 
     build_select(parameter)
-    if parameter == 'i':
+    if parameter == 'iar':
         print("\r\n")
         checksum_hex_file()
 
