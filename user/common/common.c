@@ -173,7 +173,7 @@ void COMMON_EXTI7_Process(void)
     FlowMeterCtr++;
 }
 
-void LED_Management(void)
+static void LED_Management(void)
 {
     if (F_Heat == RESET) {
         RED_LED_OFF();

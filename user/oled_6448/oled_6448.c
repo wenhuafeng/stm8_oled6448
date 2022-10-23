@@ -165,12 +165,6 @@ void I2C_Delay(void)
     while (i--);
 }
 
-void I2C_PinLow(void)
-{
-    LCD_SDA_1_LOW();
-    LCD_SCL_1_LOW();
-}
-
 void I2C_Start(void)
 {
     LCD_SDA_1_HIGH();

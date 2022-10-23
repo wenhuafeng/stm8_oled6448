@@ -1,5 +1,5 @@
-[Time]2022-10-23 22:35:18 : Info:  [main] version: v1.0.2 Sep 18 2022 13:11:18
-[Time]2022-10-23 22:35:18 : Info:  [common] sc1086.bin modify time: 2022-10-23 22:35:18
-[Time]2022-10-23 22:35:18 : Info:  [common] sc1086.bin file size: 7505
-[Time]2022-10-23 22:35:18 : Info:  [crc32] 6e5e9cb3
-[Time]2022-10-23 22:35:18 : Info:  [sha256] a820935188d3afe4eab0933b4d0ab9da20c2504000551f21759c50b7b8080ca3
+[Time]2022-10-23 22:38:27 : Info:  [main] version: v1.0.2 Sep 18 2022 13:11:18
+[Time]2022-10-23 22:38:27 : Info:  [common] sc1086.bin modify time: 2022-10-23 22:38:27
+[Time]2022-10-23 22:38:27 : Info:  [common] sc1086.bin file size: 7505
+[Time]2022-10-23 22:38:27 : Info:  [crc32] 6e5e9cb3
+[Time]2022-10-23 22:38:27 : Info:  [sha256] a820935188d3afe4eab0933b4d0ab9da20c2504000551f21759c50b7b8080ca3
