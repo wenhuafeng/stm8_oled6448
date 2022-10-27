@@ -5,7 +5,7 @@
 Building configuration: sc1086 - Debug
 Updating build tree...
 
-27  file(s) deleted.
+29  file(s) deleted.
 Updating build tree...
 adc_func.c 
 common.c 
