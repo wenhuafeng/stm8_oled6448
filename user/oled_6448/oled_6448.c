@@ -409,11 +409,8 @@ void OLED_Display(void)
 
 #else
 
-void OLED_Init(void)
-{
-}
-void OLED_Display(void)
-{
-}
+void OLED_Init(void) {}
+void OLED_DispBufferUpdate(void) {}
+void OLED_Display(void) {}
 
 #endif

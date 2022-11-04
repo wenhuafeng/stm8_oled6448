@@ -7,7 +7,6 @@
 
 #define MAX_NUMBER_BYTES 10
 
-extern uint8_t my_printf_test(void);
-uint8_t printf(const char *fmt, ...);
+extern uint8_t printf_test(void);
 
-#endif /* _MY_PRINTF_H */
+#endif

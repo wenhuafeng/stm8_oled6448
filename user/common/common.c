@@ -188,7 +188,6 @@ void COMMON_Init(void)
 {
     DelayMs(100);
     OLED_Init();
-    my_printf_test();
 }
 
 void COMMON_Process(void)
@@ -225,6 +224,7 @@ void COMMON_Process(void)
             TIME_Run();
         }
         OLED_DispBufferUpdate();
+        printf_test();
     }
 
     LED_Management();

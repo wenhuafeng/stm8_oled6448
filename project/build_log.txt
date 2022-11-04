@@ -5,12 +5,15 @@
 Building configuration: sc1086 - Debug
 Updating build tree...
 
-29  file(s) deleted.
+25  file(s) deleted.
 Updating build tree...
 adc_func.c 
 common.c 
 gp_sub.c 
 initialization.c 
+D:\src\0_examples\STM8\sc1086\program\user\bsp\initialization.c(374) : Warning[Pe188]: enumerated type mixed with another type
+D:\src\0_examples\STM8\sc1086\program\user\bsp\initialization.c(311) : Warning[Pe177]: function "LSE_StabTime" was declared but never referenced
+D:\src\0_examples\STM8\sc1086\program\user\bsp\initialization.c(371) : Warning[Pe177]: function "SPI_Config" was declared but never referenced
 key_process.c 
 main.c 
 my_printf.c 
@@ -38,5 +41,5 @@ sc1086.out
 Output Converter
 
 Total number of errors: 0
-Total number of warnings: 0
+Total number of warnings: 3
 

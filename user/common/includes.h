@@ -13,6 +13,7 @@
 #define SUPPORT_OLED_6448 1
 #define SUPPORT_MY_PRINTF 0
 
+//#include <stdio.h>
 #include "stm8l15x_conf.h"
 #include "stm8l15x_it.h"
 

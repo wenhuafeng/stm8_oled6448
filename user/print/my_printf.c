@@ -62,9 +62,9 @@ static uint8_t out_num(int32_t n, uint8_t base, char lead, uint8_t maxwidth)
 {
     uint8_t m = 0;
     uint8_t buf[MAX_NUMBER_BYTES];
-    uint8_t *s = buf + sizeof(buf);
+    uint8_t *s    = buf + sizeof(buf);
     uint8_t count = 0;
-    uint8_t i = 0;
+    uint8_t i     = 0;
 
     *--s = '\0';
 
@@ -160,30 +160,51 @@ uint8_t printf(const char *fmt, ...)
     return 0;
 }
 
-uint8_t my_printf_test(void)
+uint8_t printf_test(void)
 {
-    printf("This is www.100ask.org my_printf test\n\r");
-    printf("test char =%c, %c\n\r", 'A', 'a');
-    printf("test decimal number =%d\n\r", 123456);
-    printf("test decimal number =%d\n\r", -123456);
-    printf("test hex number =0x%x\n\r", 0x55aa55aa);
-    printf("test string =%s\n\r", "www.100ask.org");
-    printf("num=%08d\n\r", 12345);
-    printf("num=%8d\n\r", 12345);
-    printf("num=0x%08x\n\r", 0x12345);
-    printf("num=0x%8x\n\r", 0x12345);
-    printf("num=0x%02x\n\r", 0x1);
-    printf("num=0x%2x\n\r", 0x1);
+    printf("This is www.100ask.org my_printf test\r\n");
+    printf("test char =%c, %c\r\n", 'A', 'a');
+    printf("test decimal number =%d\r\n", 123456);
+    printf("test decimal number =%d\r\n", -123456);
+    printf("test hex number =0x%x\r\n", 0x55aa55aa);
+    printf("test string =%s\r\n", "www.100ask.org");
+    printf("num=%08d\r\n", 12345);
+    printf("num=%8d\r\n", 12345);
+    printf("num=0x%08x\r\n", 0x12345);
+    printf("num=0x%8x\r\n", 0x12345);
+    printf("num=0x%02x\r\n", 0x1);
+    printf("num=0x%2x\r\n", 0x1);
 
-    printf("num=%05d\n\r", 0x1);
-    printf("num=%5d\n\r", 0x1);
+    printf("num=%05d\r\n", 0x1);
+    printf("num=%5d\r\n", 0x1);
 
     return 0;
 }
 
 #else
 
-uint8_t my_printf_test(void)
+//#ifdef _RAISONANCE_
+//#define PUTCHAR_PROTOTYPE int putchar(char c)
+//#define GETCHAR_PROTOTYPE int getchar(void)
+//#elif defined(_COSMIC_)
+//#define PUTCHAR_PROTOTYPE char putchar(char c)
+//#define GETCHAR_PROTOTYPE char getchar(void)
+//#else /* _IAR_ */
+//#define PUTCHAR_PROTOTYPE int putchar(int c)
+//#define GETCHAR_PROTOTYPE int getchar(void)
+//#endif /* _RAISONANCE_ */
+//
+//PUTCHAR_PROTOTYPE
+//{
+//    /* Write a character to the USART */
+//    USART_SendData8(USART1, c);
+//    /* Loop until the end of transmission */
+//    while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+//
+//    return (c);
+//}
+
+uint8_t printf_test(void)
 {
     return 0;
 }

@@ -21,13 +21,23 @@
 
 #define BAUDRATE 115200
 
+#define BUFFER_SIZE ((uint8_t)3)
+//extern uint16_t Buffer[BUFFER_SIZE];
+
+union ADC_BUF {
+    uint16_t Buffer[BUFFER_SIZE];
+    struct {
+        uint8_t adc_buf[BUFFER_SIZE * 2];
+    } Buf;
+};
+
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 //uint16_t Buffer[BUFFER_SIZE];
 //union ADC_BUF ADC_BUFFER;
 
 /*
-void PortLowPower(void)
+static void PortLowPower(void)
 {
   //1~10
   GPIO_Init(SDA_PORT, SDA_PIN, GPIO_Mode_Out_PP_Low_Fast);
@@ -56,7 +66,7 @@ void PortLowPower(void)
   * @param  None
   * @retval None
   */
-void PORT_Config(void)
+static void PORT_Config(void)
 {
     //1~10
     GPIO_Init(RED_LED_PORT, RED_LED_PIN, GPIO_Mode_Out_PP_Low_Fast);
@@ -92,7 +102,7 @@ void PORT_Config(void)
   * @param  None
   * @retval None
   */
-void CLK_Config_HSI(void)
+static void CLK_Config_HSI(void)
 {
     /* Switch the clock to HSI*/
     CLK_SYSCLKDivConfig(CLK_SYSCLKDiv_1);
@@ -285,7 +295,7 @@ static void USART_Config(void)
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 }
 
-void EXTI_Config(void)
+static void EXTI_Config(void)
 {
     EXTI_DeInit();
     EXTI_SetPinSensitivity(EXTI_Pin_7, EXTI_Trigger_Rising);         //Flow meter
@@ -298,7 +308,7 @@ void EXTI_Config(void)
   * @retval None.
   * Note : TIM4 is configured for a system clock = 2MHz
   */
-void LSE_StabTime(void)
+static void LSE_StabTime(void)
 {
     CLK_PeripheralClockConfig(CLK_Peripheral_TIM4, ENABLE);
 
@@ -322,7 +332,7 @@ void LSE_StabTime(void)
     CLK_PeripheralClockConfig(CLK_Peripheral_TIM4, DISABLE);
 }
 
-void RTC_Config(void)
+static void RTC_Config(void)
 {
     /*
   // Enable RTC clock
@@ -356,6 +366,13 @@ void RTC_Config(void)
     //38000/16=2375, 0.5/(1/2375)=1187.5
     RTC_SetWakeUpCounter(1186);
     RTC_WakeUpCmd(ENABLE);
+}
+
+static void SPI_Config(void)
+{
+    SPI_Init(SPI1, SPI_FirstBit_MSB, SPI_BaudRatePrescaler_32, SPI_Mode_Master,
+             SPI_CPOL_Low, SPI_CPHA_2Edge, SPI_Direction_Tx, SPI_NSS_Soft, 0xaa);
+    SPI_Cmd(SPI1, ENABLE);
 }
 
 /**

@@ -26,7 +26,7 @@
                 <option>
                     <name>GenDataModel</name>
                     <version>0</version>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>GOutputBinary</name>
@@ -60,7 +60,7 @@
                 </option>
                 <option>
                     <name>GenRTConfigPath</name>
-                    <state>$TOOLKIT_DIR$\LIB\dlstm8smn.h</state>
+                    <state>$TOOLKIT_DIR$\LIB\dlstm8ssn.h</state>
                 </option>
                 <option>
                     <name>GenLibInFormatter</name>
@@ -486,7 +486,7 @@
                 <option>
                     <name>OOCOutputFormat</name>
                     <version>2</version>
-                    <state>2</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OCOutputOverride</name>
@@ -494,7 +494,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>sc1086.bin</state>
+                    <state>sc1086.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>

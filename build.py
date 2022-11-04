@@ -8,7 +8,7 @@ import subprocess
 import shutil
 from subprocess import Popen, PIPE
 
-CHECKSUM_OUT = "checksum.exe sc1086.bin CRC32"
+CHECKSUM_OUT = "checksum.exe sc1086.hex CRC32"
 
 # IAR path
 iar_build_exe = "D:/Program Files (x86)/IAR Systems/Embedded Workbench 8.0/common/bin/IarBuild.exe"
@@ -22,7 +22,7 @@ target_path = "user/output"
 # openocd define
 stlink_config_file = "user/openocd/stlink-dap.cfg"
 chip_config_file = "user/openocd/stm8l.cfg"
-program_cmd = "\"init; load_image user/output/sc1086.bin 0x8000; verify; reset; shutdown\""
+program_cmd = "\"init; load_image user/output/sc1086.hex 0x8000; verify; reset; shutdown\""
 
 # STVP_CmdLine.exe define
 stvp_cmd_Line           = "D:/Program Files (x86)/STMicroelectronics/st_toolset/stvp/STVP_CmdLine.exe"
@@ -52,7 +52,8 @@ def iar_build():
     print("cc type = iar")
     get_exitcode_stdout_stderr([iar_build_exe, "project/sc1086.ewp", "-build", "Debug", "-log", "info", ">", "project/build_log.txt"])
     os.system(iar_build_log)
-    cp_build_file(iar_source_file_bin, target_path)
+    #cp_build_file(iar_source_file_bin, target_path)
+    cp_build_file(iar_source_file_hex, target_path)
 
 def sdcc_build():
     return

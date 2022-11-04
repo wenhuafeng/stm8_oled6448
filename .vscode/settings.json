@@ -6,6 +6,7 @@
         "ntc.h": "c",
         "stm8l15x_conf.h": "c",
         "includes.h": "c",
-        "key_process.h": "c"
+        "key_process.h": "c",
+        "stm8_eval.h": "c"
     }
 }
