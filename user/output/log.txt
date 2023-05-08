@@ -1,4 +1,4 @@
-[Time]2022-11-05 07:28:42 : Info:  [main] version: v1.0.2 Sep 18 2022 13:11:18
-[Time]2022-11-05 07:28:42 : Info:  [common] sc1086.hex modify time: 2022-11-05 07:28:42
-[Time]2022-11-05 07:28:42 : Info:  [common] sc1086.hex file size: 20902
-[Time]2022-11-05 07:28:42 : Info:  [crc32] 9c4295d4
+[Time]2023-05-08 20:00:52 : Info:  [main] version: v1.0.2 Sep 18 2022 13:11:18
+[Time]2023-05-08 20:00:52 : Info:  [common] sc1086.hex modify time: 2023-05-08 20:00:52
+[Time]2023-05-08 20:00:52 : Info:  [common] sc1086.hex file size: 20902
+[Time]2023-05-08 20:00:52 : Info:  [crc32] 9c4295d4

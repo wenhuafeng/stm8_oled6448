@@ -5,25 +5,20 @@ MCU          = STM8L05X_LD_VL
 SDCC         = sdcc
 
 # Add process specific arguments here
-CFLAGS       = -lstm8
-CFLAGS      += -mstm8
-CFLAGS      += --opt-code-size
-CFLAGS      += --std-sdcc99
-CFLAGS      += --nogcse
-#CFLAGS      += --vc --debug
+CFLAGS = -lstm8
+CFLAGS += --opt-code-size
+CFLAGS += --std-sdcc99
+CFLAGS += --nogcse
+CFLAGS += --out-fmt-elf
+CFLAGS += --all-callee-saves
+CFLAGS += --debug
+CFLAGS += --verbose
+CFLAGS += --stack-auto
+CFLAGS += --fverbose-asm
+CFLAGS += --float-reent
+CFLAGS += --no-peep
 
-CFLAGS      += --out-fmt-elf
-
-CFLAGS       = -mstm8 --out-fmt-elf --all-callee-saves --debug --verbose --stack-auto --fverbose-asm  --float-reent --no-peep
-#CFLAGS      += --all-callee-saves
-#CFLAGS      += --debug
-#CFLAGS      += --verbose
-#CFLAGS      += --stack-auto
-#CFLAGS      += --fverbose-asm
-#CFLAGS      += --float-reent
-#CFLAGS      += --no-peep
-
-SOURCE       = \
+SOURCE = \
 user/main.c \
 user/bsp/adc_func.c \
 user/bsp/initialization.c \
@@ -38,9 +33,9 @@ user/print/my_printf.c \
 user/temp_humi/ntc.c \
 user/temp_humi/th_test.c
 
-SOURCE_DIR   = .
-OUTPUT_DIR   = $(SOURCE_DIR)/build
-StdPeriph    = $(SOURCE_DIR)/StdPeriph/STM8L15x-16x-05x/Libraries/STM8L15x_StdPeriph_Driver
+SOURCE_DIR = .
+OUTPUT_DIR = $(SOURCE_DIR)/build
+StdPeriph  = $(SOURCE_DIR)/StdPeriph/STM8L15x-16x-05x/Libraries/STM8L15x_StdPeriph_Driver
 
 # Add include paths here
 INCLUDEPATH  = -I$(StdPeriph)/inc

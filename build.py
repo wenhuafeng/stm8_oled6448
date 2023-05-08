@@ -4,7 +4,6 @@ import sys
 import os
 import datetime
 import platform
-import subprocess
 import shutil
 from subprocess import Popen, PIPE
 
@@ -50,23 +49,24 @@ def cp_build_file(source, target):
 
 def iar_build():
     print("cc type = iar")
-    get_exitcode_stdout_stderr([iar_build_exe, "project/sc1086.ewp", "-build", "Debug", "-log", "info", ">", "project/build_log.txt"])
+    get_exitcode_stdout_stderr([iar_build_exe, "project/sc1086.ewp", "-build", "Debug", "-log", "info", ">", \
+                               "project/build_log.txt"])
     os.system(iar_build_log)
     #cp_build_file(iar_source_file_bin, target_path)
     cp_build_file(iar_source_file_hex, target_path)
 
 def sdcc_build():
-    return
+    os.system('make')
 
 def stlink_download():
     host_os = platform.system()
     print("host os: %s" % host_os)
 
     if host_os == 'Windows':
-        #cmd = 'STVP_CmdLine -BoardName=ST-LINK -ProgMode=SWIM -Tool_ID=0 -Device=STM8L051x3 -log -verbose -progress -no_loop -FileProg=./user/output/sc1086.hex'
-        #subprocess.Popen(cmd)
         os.system(stvp_cmd_Line_rm_log)
-        get_exitcode_stdout_stderr([stvp_cmd_Line, "-BoardName=ST-LINK", "-ProgMode=SWIM", "-Tool_ID=0", "-Device=STM8L051x3", "-log", "-verbose", "-progress", "-no_loop", "-FileProg=./user/output/sc1086.hex"])
+        get_exitcode_stdout_stderr([stvp_cmd_Line, "-BoardName=ST-LINK", "-ProgMode=SWIM", "-Tool_ID=0", \
+                                   "-Device=STM8L051x3", "-log", "-verbose", "-progress", "-no_loop", \
+                                   "-FileProg=./user/output/sc1086.hex"])
         os.system(stvp_cmd_Line_print_log)
     else:
         print("unsupport platform")
@@ -92,9 +92,8 @@ def main_func(parameter):
     start = datetime.datetime.now()
 
     build_select(parameter)
-    if parameter == 'iar' or parameter == 'sdcc':
-        print("\r\n")
-        checksum_hex_file()
+    print("\r\n")
+    checksum_hex_file()
 
     end = datetime.datetime.now()
     print('run time: %s second' %(end - start))
